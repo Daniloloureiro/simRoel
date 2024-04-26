@@ -1,37 +1,40 @@
-body {
+.page_front {
 
-    font-family: monospace;
+  color: #000000;
 
-}
-
-ul {
-
-    font-family: helvética;
+  background: #9c9e9c;
 
 }
 
-li {
+.insert1 {
+  border-radius: 25px;
+  outline-style: dotted;
+  background-color: lightgrey;
+  width: 200px;
+  border: 15px solid rgb(81, 82, 81);
+  padding: 50px;
+  margin: 20px;
+  display: inline-block;
+} 
 
-    list-style: circle;
-
+.drop {
+  border-radius: 25px;
+  outline-style: dotted;
+  background-color: lightgrey;
+  width: 300px;
+  border: 15px solid green;
+  padding: 50px;
+  margin: 20px;
+  display: inline-block;
 }
 
-.list {
-
-    list-style: square;
-
-}
-
-#msg {
-
-    font-family: monospace;
-
-}
-
-.light-theme {
-
-    color: #000000;
-
-    background: #9c9e9c;
-
+.ch_box {
+  border-radius: 25px;
+  outline-style: dotted;
+  background-color: lightgrey;
+  width: 200px;
+  border: 15px solid green;
+  padding: 3  0px;
+  margin: 20px;
+  display: inline-block;
 }

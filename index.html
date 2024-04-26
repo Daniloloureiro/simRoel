@@ -8,37 +8,61 @@
     <link rel="stylesheet" href="main.css">
 </head>
 
-<body class="light-theme">
+<body class="page_front">
     <p id="texto"></p>
 
     <h1>Tabela de parametros</h1>
     <p id="msg">Tipos de Parametros:</p>
-    <label for="Rede">Escolha um Tamanho de Rede:</label>
-    <select name="Rede" id="Rede">
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
-    </select>
-    <p>
-        <label for="cars">Escolha um carro:</label>
-        <select name="cars" id="cars">
+    <div class="drop">
+        <label for="Rede">Escolha um Tamanho de Rede:</label>
+        <select name="Rede" id="Rede">
             <option value="volvo">Volvo</option>
             <option value="saab">Saab</option>
             <option value="mercedes">Mercedes</option>
             <option value="audi">Audi</option>
         </select>
-    </p>
-    <p>
-        <label for="cars">Escolha um carro:</label>
-        <select name="cars" id="cars">
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="audi">Audi</option>
-        </select>
-    </p>
-    </ui>
+    </div>
+    <div class="ch_box">
+        <form action="">
+            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+            <label for="vehicle1"> I have a bike</label><br>
+            <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+            <label for="vehicle2"> I have a car</label><br>
+            <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+            <label for="vehicle3"> I have a boat</label><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <div>
+        <div>
+            <form class="insert1">
+                <label for="fname">Nome:</label><br>
+                <input type="text" id="fname" name="fname"><br>
+            </form>
+            <form class="insert1">
+                <label for="fname">Nome:</label><br>
+                <input type="text" id="fname" name="fname"><br>
+            </form>
+            <form class="insert1">
+                <label for="fname">Nome:</label><br>
+                <input type="text" id="fname" name="fname"><br>
+            </form>
+        </div>
+        <div>
+            <form class="insert1">
+                <label for="fname">Nome:</label><br>
+                <input type="text" id="fname" name="fname"><br>
+            </form>
+            <form class="insert1">
+                <label for="fname">Nome:</label><br>
+                <input type="text" id="fname" name="fname"><br>
+            </form>
+            <form class="insert1">
+                <label for="fname">Nome:</label><br>
+                <input type="text" id="fname" name="fname"><br>
+            </form>
+        </div>
+    </div>
     <script src="app.js"></script>
     <noscript>you need javascript to view the full site.</noscript>
 </body>
