@@ -13,6 +13,22 @@ function openTab(evt, tabName) {
 }
 
 // Abre a aba desejada ao carregar a página
-window.onload = function() {
+window.onload = function () {
     openTab(event, 'Tab1');
 }
+
+const form = document.getElementById('form');
+
+form.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    console.log(this);
+
+    const formData = new FormData(this)
+
+    console.log(formData);
+
+})
+
+
+console.log(form);

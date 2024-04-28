@@ -17,135 +17,141 @@
         <button class="tablinks" onclick="openTab(event, 'Tab2')">Camada De Rede</button>
         <button class="tablinks" onclick="openTab(event, 'Tab3')">Parametros De Simulação</button>
     </div>
+    <form action="" id='form'>
+        <div id="Tab1" class="tabcontent">
+            <h3>Camada Física</h3>
+            <p>Configurações de Camada Física para simulação.</p>
+            <div class="insert1">traffic_file:
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="insert1">traffic_refresh :
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="insert1">
+                <label for="n_connections">n_connections:</label><br>
+                <input type="text" id="n_connections" name="n_connections"><br>
+            </div>
 
-    <div id="Tab1" class="tabcontent">
-        <h3>Camada Física</h3>
-        <p>Configurações de Camada Física para simulação.</p>
-        <div class="insert1">traffic_file:
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider round"></span>
-            </label>
+            <div class="insert1">
+                </dic>
+                <label for="n_simulations">n_simulations:</label><br>
+                <input type="text" id="n_simulations" name="n_simulations"><br>
+            </div>
+
+            <div class="insert1">
+                <label for="slot_size">slot_size:</label><br>
+                <input type="text" id="slot_size" name="slot_size"><br>
+            </div>
+
+            <div class="insert1">
+                <label for="n_cores">n_cores:</label><br>
+                <input type="text" id="n_cores" name="n_cores"><br>
+            </div>
+
+            <div class="insert1">
+                <label for="file_topology">file_topology:</label><br>
+                <input type="text" id="file_topology" name="file_topology"><br>
+            </div>
+
+            <div class="insert1">
+                <label for="bandwidth">bandwidth:</label><br>
+                <input type="text" id="bandwidth" name="bandwidth"><br>
+            </div>
+
+            <div class="insert1">
+                <label for="traffic_lambda">traffic_lambda:</label><br>
+                <input type="text" id="traffic_lambda" name="traffic_lambda"><br>
+            </div>
+            <div class="insert1">
+                <label for="Rede">traffic_conn_types:</label>
+                <select name="traffic_conn_types" id="traffic_conn_types">
+                    <option value="48">48</option>
+                    <option value="120">120</option>
+                    <option value="240">240</option>
+                    <option value="480">480</option>
+                    <option value="1200">1200</option>
+                </select>
+            </div>
         </div>
-        <div class="insert1">traffic_refresh :
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider round"></span>
-            </label>
         </div>
-        <form class="insert1">
-            <label for="fname">n_connections:</label><br>
-            <input type="text" id="fname" name="fname"><br>
-        </form>
-        <form class="insert1">
-            <label for="fname">n_simulations:</label><br>
-            <input type="text" id="fname" name="fname"><br>
-        </form>
-        <form class="insert1">
-            <label for="fname">slot_size:</label><br>
-            <input type="text" id="fname" name="fname"><br>
-        </form>
-        <form class="insert1">
-            <label for="fname">n_cores:</label><br>
-            <input type="text" id="fname" name="fname"><br>
-        </form>
-        <form class="insert1">
-            <label for="fname">file_topology:</label><br>
-            <input type="text" id="fname" name="fname"><br>
-        </form>
-        <form class="insert1">
-            <label for="fname">bandwidth:</label><br>
-            <input type="text" id="fname" name="fname"><br>
-        </form>
-        <form class="insert1">
-            <label for="fname">traffic_lambda:</label><br>
-            <input type="text" id="fname" name="fname"><br>
-        </form>
-        <div class="drop">
-            <label for="Rede">traffic_conn_types:</label>
-            <select name="Rede" id="Rede">
-                <option value="48">48</option>
-                <option value="120">120</option>
-                <option value="240">240</option>
-                <option value="480">480</option>
-                <option value="1200">1200</option>
-            </select>
-        </div>
-    </div>
-    <div id="Tab2" class="tabcontent">
-        <h3>Camada De Rede</h3>
-        <p>Configurações de Camada de Rede.</p>
-        <form class="insert1">
-            <label for="fname">route_algorithm:</label><br>
-            <input type="text" id="fname" name="fname"><br>
-        </form>
-        <form class="insert1">
-            <label for="fname">k_routes:</label><br>
-            <input type="text" id="fname" name="fname"><br>
-        </form>
-        <form class="insert1">
-            <label for="fname">route_selection:</label><br>
-            <input type="text" id="fname" name="fname"><br>
-        </form>
-        </form>
-        <form class="insert1">
-            <label for="fname">pcc_holding_time:</label><br>
-            <input type="text" id="fname" name="fname"><br>
-        </form>
-        </form>
-        <form class="insert1">
-            <label for="fname">guard_band:</label><br>
-            <input type="text" id="fname" name="fname"><br>
-        </form>
-        </form>
-        <form class="insert1">
-            <label for="fname">allocation:</label><br>
-            <input type="text" id="fname" name="fname"><br>
-        </form>
-        </form>
-        <div class="drop">
-            <label for="Rede">fiber_allocation:</label>
-            <select name="Rede" id="Rede">
-                <option value="first_fit">first_fit</option>
-            </select>
-        </div>
-        <div class="drop">
-            <label for="Rede">type_core_selection:</label>
-            <select name="Rede" id="Rede">
-                <option value="first_fit">first_fit</option>
-            </select>
-        </div>
-        <form class="insert1">
+        <!--
+        <div id="Tab2" class="tabcontent">
+            <h3>Camada De Rede</h3>
+            <p>Configurações de Camada de Rede.</p>
+            <div class="insert1">
+                <label for="route_algorithm">route_algorithm:</label><br>
+                <input type="text" id="fname" name="route_algorithm"><br>
+            </div>
+            <div class="insert1">
+                <label for="k_routes">k_routes:</label><br>
+                <input type="text" id="" name="k_routes"><br>
+            </div class="insert1">
+
+            <div class="insert1">
+                <label for="fname">route_selection:</label><br>
+                <input type="text" id="" name="route_selection"><br>
+            </div>
+
+            <div class="insert1">
+                <label for="fname">pcc_holding_time:</label><br>
+                <input type="text" id="" name="pcc_holding_time"><br>
+            </div>
+
+            <div class="insert1">
+                <label for="fname">guard_band:</label><br>
+                <input type="text" id="" name="guard_band"><br>
+            </div>
+
+            <div class="insert1">
+                <label for="fname">allocation:</label><br>
+                <input type="text" id="" name="allocation"><br>
+            </div>
+            <div class="drop">
+                <label for="Rede">fiber_allocation:</label>
+                <select name="fiber_allocation" id="Rede">
+                    <option value="first_fit">first_fit</option>
+                </select>
+            </div>
+            <div class="drop">
+                <label for="Rede">type_core_selection:</label>
+                <select name="type_core_selection" id="Rede">
+                    <option value="first_fit">first_fit</option>
+                </select>
+            </div>
             <label for="fname">connection_holding_time:</label><br>
-            <input type="text" id="fname" name="fname"><br>
-        </form>
-        <div class="insert1">tracer:
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider round"></span>
-            </label>
+            <input type="text" id="fname" name="connection_holding_time"><br>
+            <div class="insert1">tracer:
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="insert1">osnr:
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="drop">
+                <label for="Rede">modulation:</label>
+                <select name="modulation" id="Rede">
+                    <option value="64-QAM">64-QAM</option>
+                    <option value="32-QAM">32-QAM</option>
+                    <option value="16-QAM">16-QAM</option>
+                    <option value="8-QAM">8-QAM</option>
+                    <option value="4-QAM">4-QAM</option>
+                </select>
+            </div>
         </div>
-        <div class="insert1">osnr:
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider round"></span>
-            </label>
-        </div>
-        <div class="drop">
-            <label for="Rede">modulation:</label>
-            <select name="Rede" id="Rede">
-                <option value="64-QAM">64-QAM</option>
-                <option value="32-QAM">32-QAM</option>
-                <option value="16-QAM">16-QAM</option>
-                <option value="8-QAM">8-QAM</option>
-                <option value="4-QAM">4-QAM</option>
-            </select>
-        </div>
-    </div>
-    <div id="Tab3" class="tabcontent">
-        <h3>Parametros De Simulação</h3>
-        <p>Configuração de algoritmos Para Simulação.</p>
-        <form>
+        <div id="Tab3" class="tabcontent">
+            <h3>Parametros De Simulação</h3>
+            <p>Configuração de algoritmos Para Simulação.</p>
             <div class="insert1">
                 <label for="lambda">Lambda:</label><br>
                 <input type="number" id="lambda" name="lambda" value="0.2"><br>
@@ -222,13 +228,10 @@
                 <label for="osnr_ber_type">OSNR BER Type:</label><br>
                 <input type="text" id="osnr_ber_type" name="osnr_ber_type" value="ber_2-7"><br>
             </div>
-        </form>
-    </div>
-    <div>
-        <form action="/submit">
-            <input type="submit" value="Enviar" class="button">
-        </form>
-    </div>
+        </div>
+    -->
+        <input class="button" type="submit" value="Enviar">
+    </form>
     <script src="app.js"></script>
     <noscript>you need javascript to view the full site.</noscript>
 </body>
