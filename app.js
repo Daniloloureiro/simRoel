@@ -12,7 +12,6 @@ function openTab(evt, tabName) {
     evt.currentTarget.className += " active";
 }
 
-// Abre a aba desejada ao carregar a página
 window.onload = function () {
     openTab(event, 'Tab1');
 }
@@ -25,5 +24,11 @@ formEl.addEventListener('submit', evento => {
     const formData = new FormData(formEl);
     const data = Object.fromEntries(formData);
 
-    console.log(data);
+    fetch('https://reqres.in/api/users',{
+        method: 'post',
+        headers: {
+                'content-type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(res => res.JSON()).then(data => console.log(data))
 })

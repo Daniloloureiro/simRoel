@@ -21,126 +21,41 @@
         <div id="Tab1" class="tabcontent">
             <h3>Camada Física</h3>
             <p>Configurações de Camada Física para simulação.</p>
-            <div class="insert1">traffic_file:
-                <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                </label>
-            </div>
-            <div class="insert1">traffic_refresh :
-                <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                </label>
-            </div>
-            <div class="insert1">
-                <label for="n_connections">n_connections:</label><br>
-                <input type="text" id="n_connections" name="n_connections"><br>
-            </div>
-
-            <div class="insert1">
-                </dic>
-                <label for="n_simulations">n_simulations:</label><br>
-                <input type="text" id="n_simulations" name="n_simulations"><br>
-            </div>
-
-            <div class="insert1">
-                <label for="slot_size">slot_size:</label><br>
-                <input type="text" id="slot_size" name="slot_size"><br>
-            </div>
-
-            <div class="insert1">
-                <label for="n_cores">n_cores:</label><br>
-                <input type="text" id="n_cores" name="n_cores"><br>
-            </div>
-
-            <div class="insert1">
-                <label for="file_topology">file_topology:</label><br>
-                <input type="text" id="file_topology" name="file_topology"><br>
-            </div>
-
             <div class="insert1">
                 <label for="bandwidth">bandwidth:</label><br>
-                <input type="text" id="bandwidth" name="bandwidth"><br>
-            </div>
-
-            <div class="insert1">
-                <label for="traffic_lambda">traffic_lambda:</label><br>
-                <input type="text" id="traffic_lambda" name="traffic_lambda"><br>
+                <input type="number" name="bandwidth" value="40" min="40"><br>
             </div>
             <div class="insert1">
-                <label for="Rede">traffic_conn_types:</label>
-                <select name="traffic_conn_types" id="traffic_conn_types">
-                    <option value="48">48</option>
-                    <option value="120">120</option>
-                    <option value="240">240</option>
-                    <option value="480">480</option>
-                    <option value="1200">1200</option>
-                </select>
+                <label for="slot_size">slot_size:</label><br>
+                <input type="number" name="slot_size" value="12.5" min="12.5"><br>
             </div>
         </div>
-        </div>
-        <!--
         <div id="Tab2" class="tabcontent">
             <h3>Camada De Rede</h3>
             <p>Configurações de Camada de Rede.</p>
-            <div class="insert1">
-                <label for="route_algorithm">route_algorithm:</label><br>
-                <input type="text" id="fname" name="route_algorithm"><br>
+            <div class="drop">
+                <label for="Rede">Topology:</label>
+                <select name="nsfnet" id="nsfnet">
+                    <option value="dt">dt</option>
+                    <option value="nsfnet">nsfnet</option>
+                </select>
             </div>
             <div class="insert1">
-                <label for="k_routes">k_routes:</label><br>
-                <input type="text" id="" name="k_routes"><br>
-            </div class="insert1">
-
-            <div class="insert1">
-                <label for="fname">route_selection:</label><br>
-                <input type="text" id="" name="route_selection"><br>
-            </div>
-
-            <div class="insert1">
-                <label for="fname">pcc_holding_time:</label><br>
-                <input type="text" id="" name="pcc_holding_time"><br>
-            </div>
-
-            <div class="insert1">
-                <label for="fname">guard_band:</label><br>
-                <input type="text" id="" name="guard_band"><br>
-            </div>
-
-            <div class="insert1">
-                <label for="fname">allocation:</label><br>
-                <input type="text" id="" name="allocation"><br>
+                <label for="guard_band">guard_band:</label><br>
+                <input type="number" id="guard_band" name="guard_band" value="1" min="1"><br>
             </div>
             <div class="drop">
-                <label for="Rede">fiber_allocation:</label>
-                <select name="fiber_allocation" id="Rede">
-                    <option value="first_fit">first_fit</option>
+                <label for="N_cores">N_cores:</label>
+                <select name="N_cores" id="N_cores">
+                    <option value="1">1</option>
+                    <option value="7">7</option>
+                    <option value="12">12</option>
+                    <option value="19">19</option>
                 </select>
             </div>
             <div class="drop">
-                <label for="Rede">type_core_selection:</label>
-                <select name="type_core_selection" id="Rede">
-                    <option value="first_fit">first_fit</option>
-                </select>
-            </div>
-            <label for="fname">connection_holding_time:</label><br>
-            <input type="text" id="fname" name="connection_holding_time"><br>
-            <div class="insert1">tracer:
-                <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                </label>
-            </div>
-            <div class="insert1">osnr:
-                <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                </label>
-            </div>
-            <div class="drop">
-                <label for="Rede">modulation:</label>
-                <select name="modulation" id="Rede">
+                <label for="modulation">modulation:</label>
+                <select name="modulation" id="modulation">
                     <option value="64-QAM">64-QAM</option>
                     <option value="32-QAM">32-QAM</option>
                     <option value="16-QAM">16-QAM</option>
@@ -148,88 +63,63 @@
                     <option value="4-QAM">4-QAM</option>
                 </select>
             </div>
+            <div class="drop">
+                <label for="OSNR-pertype">OSNR-pertype:</label>
+                <select name="OSNR-pertype" id="OSNR-pertype">
+                    <option value="hdfeq">hdfeq</option>
+                    <option value="nsfnet">sdfeq</option>
+                </select>
+            </div>
+            <div class="insert1">
+                <label for="span_length">Span Length:</label><br>
+                <input type="number" id="span_length" name="span_length" min="80" max="100" value="80"><br>
+            </div>
+            <div class="insert1">
+                <label for="node_loss">Node Loss:</label><br>
+                <input type="number" id="node_loss" name="node_loss" value="0.2"><br>
+            </div>
+            <div class="drop">
+                <label for="trafic_conn_type">trafic_conn_type:</label>
+                <select name="trafic_conn_type" id="trafic_conn_type">
+                    <option value="48">48</option>
+                    <option value="120">120</option>
+                    <option value="480">480</option>
+                    <option value="1200">1200</option>
+                </select>
+            </div>
+            <div class="drop">
+                <label for="fiber_allocation">fiber_allocation:</label>
+                <select name="fiber_allocation" id="fiber_allocation">
+                    <option value="first_fit">first_fit</option>
+                    <option value="random_fit">random_fit</option>
+                </select>
+            </div>
+            <div class="drop">
+                <label for="Retype_core_selectionde">type_core_selection:</label>
+                <select name="type_core_selection" id="type_core_selection">
+                    <option value="first_fit">first_fit</option>
+                    <option value="random_fit">random_fit</option>
+                </select>
+            </div>
         </div>
         <div id="Tab3" class="tabcontent">
             <h3>Parametros De Simulação</h3>
             <p>Configuração de algoritmos Para Simulação.</p>
             <div class="insert1">
-                <label for="lambda">Lambda:</label><br>
-                <input type="number" id="lambda" name="lambda" value="0.2"><br>
+                <label for="n_simulations">N_simulations:</label><br>
+                <input type="number" id="n_simulations" name="n_simulations" value="1" min="1"><br>
             </div>
             <div class="insert1">
-                <label for="fn">Fn:</label><br>
-                <input type="number" id="fn" name="fn" value="5"><br>
+                <label for="traffic_lambda">traffic_lambda:</label><br>
+                <input type="number" id="traffic_lambda" name="traffic_lambda" value=1 min="1"><br>
             </div>
-            <div class="insert1">
-                <label for="p">P:</label><br>
-                <input type="number" id="p" name="p" value="0.0003"><br>
+            <div class="insert1">OSNR:
+                    <input name="OSNR" type="checkbox">
             </div>
-            <div class="insert1">
-                <label for="span_length">Span Length:</label><br>
-                <input type="number" id="span_length" name="span_length" value="80"><br>
-            </div>
-            <div class="insert1">
-                <label for="node_loss">Node Loss:</label><br>
-                <input type="number" id="node_loss" name="node_loss" value="16"><br>
-            </div>
-            <div class="insert1">
-                <label for="bandwidth_reference">Bandwidth Reference:</label><br>
-                <input type="number" id="bandwidth_reference" name="bandwidth_reference" value="12.5"><br>
-            </div>
-            <div class="insert1">
-                <label for="limit_single_carrier">Limit Single Carrier:</label><br>
-                <input type="number" id="limit_single_carrier" name="limit_single_carrier" value="120"><br>
-            </div>
-            <div class="insert1">
-                <label for="wavelength">Wavelength:</label><br>
-                <input type="number" id="wavelength" name="wavelength" value="1550"><br>
-            </div>
-            <div class="insert1">
-                <label for="bending_radius">Bending Radius:</label><br>
-                <input type="number" id="bending_radius" name="bending_radius" value="0.01"><br>
-            </div>
-            <div class="insert1">
-                <label for="coupling_coeff">Coupling Coeff:</label><br>
-                <input type="number" id="coupling_coeff" name="coupling_coeff" value="0.012"><br>
-            </div>
-            <div class="insert1">
-                <label for="core_pitch">Core Pitch:</label><br>
-                <input type="number" id="core_pitch" name="core_pitch" value="4.5"><br>
-            </div>
-            <div class="insert1">
-                <label for="port_isolation">Port Isolation:</label><br>
-                <input type="number" id="port_isolation" name="port_isolation" value="50"><br>
-            </div>
-            <div class="insert1">
-                <label for="crosstalk_tracer">Crosstalk Tracer:</label><br>
-                <input type="checkbox" id="crosstalk_tracer" name="crosstalk_tracer" value="false"><br>
-            </div>
-            <div class="insert1">
-                <label for="crosstalk_reason">Crosstalk Reason:</label><br>
-                <input type="checkbox" id="crosstalk_reason" name="crosstalk_reason" value="true"><br>
-            </div>
-            <div class="insert1">
-                <label for="calculate_crosstalk">Calculate Crosstalk:</label><br>
-                <input type="checkbox" id="calculate_crosstalk" name="calculate_crosstalk" value="true"><br>
-            </div>
-            <div class="insert1">
-                <label for="ci">Ci:</label><br>
-                <input type="number" id="ci" name="ci" value="95"><br>
-            </div>
-            <div class="insert1">
-                <label for="thread_number">Thread Number:</label><br>
-                <input type="text" id="thread_number" name="thread_number" value="DEFAULT"><br>
-            </div>
-            <div class="insert1">
-                <label for="pcc_time_threshold">PCC Time Threshold:</label><br>
-                <input type="number" id="pcc_time_threshold" name="pcc_time_threshold" value="0.0035714285715"><br>
-            </div>
-            <div class="insert1">
-                <label for="osnr_ber_type">OSNR BER Type:</label><br>
-                <input type="text" id="osnr_ber_type" name="osnr_ber_type" value="ber_2-7"><br>
+            <div class="insert1">Calculate Crosstalk:
+                <input name="Calculate Crosstalk" type="checkbox">
             </div>
         </div>
-    -->
         <input class="button" type="submit" value="Enviar">
     </form>
     <script src="app.js"></script>
