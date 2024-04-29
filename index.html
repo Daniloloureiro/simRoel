@@ -4,30 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simroel</title>
+    <title>SimROEL Web</title>
     <link rel="stylesheet" href="main.css">
 </head>
 
 <body class="page_front">
     <div class="header">
-        <h1>Simulador De Rede</h1>
+        <h1>SimROEL Web</h1>
     </div>
     <div class="tab">
-        <button class="tablinks" onclick="openTab(event, 'Tab1')">Camada Física</button>
-        <button class="tablinks" onclick="openTab(event, 'Tab2')">Camada De Rede</button>
-        <button class="tablinks" onclick="openTab(event, 'Tab3')">Parametros De Simulação</button>
+        <button class="tablinks" onclick="openTab(event, 'Tab1')">Parâmetros De Simulação</button>
+        <button class="tablinks" onclick="openTab(event, 'Tab2')">Parâmetros De Rede</button>
+        <button class="tablinks" onclick="openTab(event, 'Tab3')">Parâmetros De Camada Física</button>
     </div>
     <form action="" id='form'>
         <div id="Tab1" class="tabcontent">
-            <h3>Camada Física</h3>
-            <p>Configurações de Camada Física para simulação.</p>
+            <h3>Parametros De Simulação</h3>
+            <p>Configuração de algoritmos Para Simulação.</p>
             <div class="insert1">
-                <label for="bandwidth">bandwidth:</label><br>
-                <input type="number" name="bandwidth" value="40" min="40"><br>
+                <label for="n_simulations">N_simulations:</label><br>
+                <input type="number" id="n_simulations" name="n_simulations" value="1" min="1"><br>
             </div>
             <div class="insert1">
-                <label for="slot_size">slot_size:</label><br>
-                <input type="number" name="slot_size" value="12.5" min="12.5"><br>
+                <label for="traffic_lambda">traffic_lambda:</label><br>
+                <input type="number" id="traffic_lambda" name="traffic_lambda" value=1 min="1"><br>
+            </div>
+            <div class="insert1">OSNR:
+                    <input name="OSNR" type="checkbox">
+            </div>
+            <div class="insert1">Calculate Crosstalk:
+                <input name="Calculate Crosstalk" type="checkbox">
             </div>
         </div>
         <div id="Tab2" class="tabcontent">
@@ -103,21 +109,14 @@
             </div>
         </div>
         <div id="Tab3" class="tabcontent">
-            <h3>Parametros De Simulação</h3>
-            <p>Configuração de algoritmos Para Simulação.</p>
+            <p>Configurações de Camada Física para simulação.</p>
             <div class="insert1">
-                <label for="n_simulations">N_simulations:</label><br>
-                <input type="number" id="n_simulations" name="n_simulations" value="1" min="1"><br>
+                <label for="bandwidth">bandwidth:</label><br>
+                <input type="number" name="bandwidth" value="40" min="40"><br>
             </div>
             <div class="insert1">
-                <label for="traffic_lambda">traffic_lambda:</label><br>
-                <input type="number" id="traffic_lambda" name="traffic_lambda" value=1 min="1"><br>
-            </div>
-            <div class="insert1">OSNR:
-                    <input name="OSNR" type="checkbox">
-            </div>
-            <div class="insert1">Calculate Crosstalk:
-                <input name="Calculate Crosstalk" type="checkbox">
+                <label for="slot_size">slot_size:</label><br>
+                <input type="number" name="slot_size" value="12.5" min="12.5"><br>
             </div>
         </div>
         <input class="button" type="submit" value="Enviar">
