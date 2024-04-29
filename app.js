@@ -24,11 +24,11 @@ formEl.addEventListener('submit', evento => {
     const formData = new FormData(formEl);
     const data = Object.fromEntries(formData);
 
-    fetch('https://reqres.in/api/users',{
+    fetch('https://reqres.in/api/users', {
         method: 'post',
         headers: {
-                'content-type': 'application/json'
+            'content-type': 'application/json'
         },
         body: JSON.stringify(data)
-    }).then(res => res.JSON()).then(data => console.log(data))
+    }).then(res => res.json()).then(data => console.log(data))
 })
