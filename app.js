@@ -17,18 +17,13 @@ window.onload = function () {
     openTab(event, 'Tab1');
 }
 
-const form = document.getElementById('form');
+const formEl = document.getElementById('form')
 
-form.addEventListener('submit', function (event) {
-    event.preventDefault();
+formEl.addEventListener('submit', evento => {
+    evento.preventDefault();
 
-    console.log(this);
+    const formData = new FormData(formEl);
+    const data = Object.fromEntries(formData);
 
-    const formData = new FormData(this)
-
-    console.log(formData);
-
+    console.log(data);
 })
-
-
-console.log(form);
