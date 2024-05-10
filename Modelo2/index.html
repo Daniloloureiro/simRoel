@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimROEL Web</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body class="page_front">
+    <div class="header">
+        <h1>SimROEL Web</h1>
+    </div>
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'Tab1')">Parâmetros De Simulação</button>
+        <button class="tablinks" onclick="openTab(event, 'Tab2')">Parâmetros De Rede</button>
+        <button class="tablinks" onclick="openTab(event, 'Tab3')">Parâmetros De Camada Física</button>
+    </div>
+    <form action="" id='form'>
+        <div id="Tab1" class="tabcontent">
+            <h3>Parametros De Simulação</h3>
+            <p>Configuração de algoritmos Para Simulação.</p>
+            <div class="insert1">
+                <label for="n_simulations">N_simulations:</label><br>
+                <input type="number" id="n_simulations" name="n_simulations" value="1" min="1"><br>
+            </div>
+            <div class="insert1">
+                <label for="traffic_lambda">traffic_lambda:</label><br>
+                <input type="number" id="traffic_lambda" name="traffic_lambda" value=1 min="1"><br>
+            </div>
+            <div class="insert1">OSNR:
+                    <input name="OSNR" type="checkbox">
+            </div>
+            <div class="insert1">Calculate Crosstalk:
+                <input name="Calculate Crosstalk" type="checkbox">
+            </div>
+        </div>
+        <div id="Tab2" class="tabcontent">
+            <h3>Camada De Rede</h3>
+            <p>Configurações de Camada de Rede.</p>
+            <div class="drop">
+                <label for="Rede">Topology:</label>
+                <select name="nsfnet" id="nsfnet">
+                    <option value="dt">dt</option>
+                    <option value="nsfnet">nsfnet</option>
+                </select>
+            </div>
+            <div class="insert1">
+                <label for="guard_band">guard_band:</label><br>
+                <input type="number" id="guard_band" name="guard_band" value="1" min="1"><br>
+            </div>
+            <div class="drop">
+                <label for="N_cores">N_cores:</label>
+                <select name="N_cores" id="N_cores">
+                    <option value="1">1</option>
+                    <option value="7">7</option>
+                    <option value="12">12</option>
+                    <option value="19">19</option>
+                </select>
+            </div>
+            <div class="drop">
+                <label for="modulation">modulation:</label>
+                <select name="modulation" id="modulation">
+                    <option value="64-QAM">64-QAM</option>
+                    <option value="32-QAM">32-QAM</option>
+                    <option value="16-QAM">16-QAM</option>
+                    <option value="8-QAM">8-QAM</option>
+                    <option value="4-QAM">4-QAM</option>
+                </select>
+            </div>
+            <div class="drop">
+                <label for="OSNR-pertype">OSNR-pertype:</label>
+                <select name="OSNR-pertype" id="OSNR-pertype">
+                    <option value="hdfeq">hdfeq</option>
+                    <option value="nsfnet">sdfeq</option>
+                </select>
+            </div>
+            <div class="insert1">
+                <label for="span_length">Span Length:</label><br>
+                <input type="number" id="span_length" name="span_length" min="80" max="100" value="80"><br>
+            </div>
+            <div class="insert1">
+                <label for="node_loss">Node Loss:</label><br>
+                <input type="number" id="node_loss" name="node_loss" value="0.2"><br>
+            </div>
+            <div class="drop">
+                <label for="trafic_conn_type">trafic_conn_type:</label>
+                <select name="trafic_conn_type" id="trafic_conn_type">
+                    <option value="48">48</option>
+                    <option value="120">120</option>
+                    <option value="480">480</option>
+                    <option value="1200">1200</option>
+                </select>
+            </div>
+            <div class="drop">
+                <label for="fiber_allocation">fiber_allocation:</label>
+                <select name="fiber_allocation" id="fiber_allocation">
+                    <option value="first_fit">first_fit</option>
+                    <option value="random_fit">random_fit</option>
+                </select>
+            </div>
+            <div class="drop">
+                <label for="Retype_core_selectionde">type_core_selection:</label>
+                <select name="type_core_selection" id="type_core_selection">
+                    <option value="first_fit">first_fit</option>
+                    <option value="random_fit">random_fit</option>
+                </select>
+            </div>
+        </div>
+        <div id="Tab3" class="tabcontent">
+            <p>Configurações de Camada Física para simulação.</p>
+            <div class="insert1">
+                <label for="bandwidth">bandwidth:</label><br>
+                <input type="number" name="bandwidth" value="40" min="40"><br>
+            </div>
+            <div class="insert1">
+                <label for="slot_size">slot_size:</label><br>
+                <input type="number" name="slot_size" value="12.5" min="12.5"><br>
+            </div>
+        </div>
+        <input class="button" type="submit" value="Simular">
+    </form>
+    <script src="app.js"></script>
+    <noscript>you need javascript to view the full site.</noscript>
+</body>
+
+</html>
