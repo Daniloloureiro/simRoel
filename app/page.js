@@ -32,8 +32,8 @@ export default function Home() {
         <button className= "tablinks" onClick ={()=>changePage('simulacao')}>Simulação</button>
         <button className= "tablinks" onClick ={()=>changePage('rede')}>Camada de Rede</button>
         <button className= "tablinks" onClick ={()=>changePage('fisica')}>Camada Fisíca</button>
-        {renderPage()}
       </div>
+      {renderPage()}
     </main>
   );
 }
