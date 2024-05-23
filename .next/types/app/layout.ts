@@ -1,4 +1,4 @@
-// File: /home/danilo/Documents/git/simRoel/app/layout.js
+// File: /home/antoniomartins/Github/simRoel/app/layout.js
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
