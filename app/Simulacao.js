@@ -22,95 +22,75 @@ import {
 
 export default function Simulacao() {
     return (
-        <div className="flex min-h-screen w-full flex-col bg-muted/40">
-            <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8 lg:grid-cols-3 xl:grid-cols-3">
-                <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
-                    <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
-                        <Card className="sm:col-span-2" x-chunk="dashboard-05-chunk-0">
-                            <form className="grid w-full items-start gap-6">
-                                <fieldset className="grid gap-6 rounded-lg border p-4">
-                                    <legend className="-ml-1 px-1 text-sm font-medium">Settings</legend>
-                                    <div className="grid gap-3">
-                                        <Label htmlFor="model">Model</Label>
-                                    </div>
-                                    <div className="grid gap-3">
-                                        <Label htmlFor="temperature">Temperature</Label>
-                                        <Input id="temperature" type="number" placeholder="0.4" />
-                                    </div>
-                                    <div className="grid grid-cols-2 gap-4">
-                                        <div className="grid gap-3">
-                                            <Label htmlFor="top-p">Top P</Label>
-                                            <Input id="top-p" type="number" placeholder="0.7" />
-                                        </div>
-                                        <div className="grid gap-3">
-                                            <Label htmlFor="top-k">Top K</Label>
-                                            <Input id="top-k" type="number" placeholder="0.0" />
-                                        </div>
-                                    </div>
-                                </fieldset>
-                                <fieldset className="grid gap-6 rounded-lg border p-4">
-                                    <legend className="-ml-1 px-1 text-sm font-medium">Messages</legend>
-                                    <div className="grid gap-3">
-                                        <Label htmlFor="role">Role</Label>
-                                        <Select defaultValue="system">
-                                            <SelectTrigger>
-                                                <SelectValue placeholder="Select a role" />
-                                            </SelectTrigger>
-                                            <SelectContent>
-                                                <SelectItem value="system">System</SelectItem>
-                                                <SelectItem value="user">User</SelectItem>
-                                                <SelectItem value="assistant">Assistant</SelectItem>
-                                            </SelectContent>
-                                        </Select>
-                                    </div>
-                                </fieldset>
-                            </form>
-                        </Card>
-                        <Card className="sm:col-span-2" x-chunk="dashboard-05-chunk-1">
-                            <form className="grid w-full items-start gap-6">
-                                <fieldset className="grid gap-6 rounded-lg border p-4">
-                                    <legend className="-ml-1 px-1 text-sm font-medium">Settings</legend>
-                                    <div className="grid gap-3">
-                                        <Label htmlFor="model">Model</Label>
-                                    </div>
-                                    <div className="grid gap-3">
-                                        <Label htmlFor="temperature">Temperature</Label>
-                                        <Input id="temperature" type="number" placeholder="0.4" />
-                                    </div>
-                                    <div className="grid grid-cols-2 gap-4">
-                                        <div className="grid gap-3">
-                                            <Label htmlFor="top-p">Top P</Label>
-                                            <Input id="top-p" type="number" placeholder="0.7" />
-                                        </div>
-                                        <div className="grid gap-3">
-                                            <Label htmlFor="top-k">Top K</Label>
-                                            <Input id="top-k" type="number" placeholder="0.0" />
-                                        </div>
-                                    </div>
-                                </fieldset>
-                                <fieldset className="grid gap-6 rounded-lg border p-4">
-                                    <legend className="-ml-1 px-1 text-sm font-medium">Messages</legend>
-                                    <div className="grid gap-3">
-                                        <Label htmlFor="role">Role</Label>
-                                        <Select defaultValue="system">
-                                            <SelectTrigger>
-                                                <SelectValue placeholder="Select a role" />
-                                            </SelectTrigger>
-                                            <SelectContent>
-                                                <SelectItem value="system">System</SelectItem>
-                                                <SelectItem value="user">User</SelectItem>
-                                                <SelectItem value="assistant">Assistant</SelectItem>
-                                            </SelectContent>
-                                        </Select>
-                                    </div>
-                                </fieldset>
-                            </form>
-                        </Card>
-                    </div>
-                </div>
-                <div>
-                </div>
-            </main>
-        </div>
+        <main className="pt-6 pl-4 pr-4 pb-8">
+            <Card className="sm:col-span-2" x-chunk="dashboard-05-chunk-0">
+                <form className="grid w-full items-start gap-6">
+                    <fieldset className="grid gap-6 rounded-lg border p-4">
+                        <legend className="-ml-1 px-1 text-sm font-medium">variables</legend>
+                        <div className="grid gap-3">
+                            <Label htmlFor="model">insert variable data</Label>
+                        </div>
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="grid gap-3">
+                                <Label htmlFor="Span Length">Span Length</Label>
+                                <Input id="Span Length" type="number" placeholder="80" />
+                            </div>
+                            <div className="grid gap-3">
+                                <Label htmlFor="Modulation">Modulation</Label>
+                                <Select defaultValue="Modulation">
+                                    <SelectTrigger>
+                                        <SelectValue placeholder="Select a Modulation" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectItem value="system">System</SelectItem>
+                                        <SelectItem value="user">User</SelectItem>
+                                        <SelectItem value="assistant">Assistant</SelectItem>
+                                    </SelectContent>
+                                </Select>
+                            </div>
+                        </div>
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="grid gap-3">
+                                <Label htmlFor="N_Cores">N_Cores</Label>
+                                <Input id="N_Cores" type="number" placeholder="0.7" />
+                            </div>
+                            <div className="grid gap-3">
+                                <Label htmlFor="Guard Band">Guard Band</Label>
+                                <Input id="Guard Band" type="number" placeholder="0.0" />
+                            </div>
+                        </div>
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="grid gap-3">
+                                <Label htmlFor="Network Topology">Network Topology</Label>
+                                <Input id="Network Topology" type="number" placeholder="0.7" />
+                            </div>
+                            <div className="grid gap-3">
+                                <Label htmlFor="Traffic conn type">Traffic conn type</Label>
+                                <Input id="Traffic conn type" type="number" placeholder="0.0" />
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset className="grid gap-6 rounded-lg border p-4">
+                        <legend className="-ml-1 px-1 text-sm font-medium">algorithm</legend>
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="grid gap-3">
+                                <Label htmlFor="Routing">Routing</Label>
+                                <Input id="Routing" type="number" placeholder="0.7" />
+                            </div>
+                            <div className="grid gap-3">
+                                <Label htmlFor="Fiber Allocation">Fiber Allocation</Label>
+                                <Input id="Fiber Allocation" type="number" placeholder="0.0" />
+                            </div>
+                        </div>
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="grid gap-3">
+                                <Label htmlFor="Type core selection">Type core selection</Label>
+                                <Input id="Type core selection" type="number" placeholder="0.7" />
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </Card>
+        </main>
     )
 }
