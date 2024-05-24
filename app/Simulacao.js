@@ -34,20 +34,20 @@ export default function Simulacao() {
                         <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">
                                 <Label htmlFor="N_simulations">Number of simulations</Label>
-                                <Input id="N_simulations" type="number" placeholder="1" min="1" />
+                                <Input className='input' id="N_simulations" type="number" placeholder="1" min="1" />
                             </div>
                             </div>
                             <div className="grid grid-cols-2 gap-4 ">
                             <div className="grid gap-3">
                                 <Label htmlFor="Traffic lambda">Traffic lambda</Label>
-                                <Input id="Traffic lambda" type="number" placeholder="1" min="1" />
+                                <Input className='input' id="Traffic lambda" type="number" placeholder="1" min="1" />
                             </div>
                         </div>
                         <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">
                                 <Label htmlFor="Calc_OSRN">Calculate OSRN (dB)</Label>
                                 <Select defaultValue="Calc_OSRN">
-                                    <SelectTrigger>
+                                    <SelectTrigger className='input'>
                                         <SelectValue placeholder="Select a is on or off" />
                                     </SelectTrigger>
                                     <SelectContent>
@@ -61,7 +61,7 @@ export default function Simulacao() {
                             <div className="grid gap-3">
                                 <Label htmlFor="Calc_Crosstalk">Calculate Crosstalk(dB)</Label>
                                 <Select defaultValue="Calc_Crosstalk">
-                                    <SelectTrigger>
+                                    <SelectTrigger className='input'>
                                         <SelectValue placeholder="Select a is on or off" />
                                     </SelectTrigger>
                                     <SelectContent>
@@ -75,7 +75,7 @@ export default function Simulacao() {
                             <div className="grid gap-3">
                                 <Label htmlFor="Intervalo de Confiança">Intervalo de Confiança</Label>
                                 <Select defaultValue="Intervalo de Confiança">
-                                    <SelectTrigger>
+                                    <SelectTrigger className='input'>
                                         <SelectValue placeholder="Select a is on or off" />
                                     </SelectTrigger>
                                     <SelectContent>

@@ -1,5 +1,6 @@
 /*Pagina para parametros de camada de Rede*/
 import * as React from "react"
+import './parametros.css'
 
 import { Textarea } from "@/components/ui/textarea"
 import {
@@ -35,7 +36,7 @@ export default function Rede() {
                         <div className="grid gap-3">
                                 <Label htmlFor="Network Topology">Network Topology</Label>
                                 <Select defaultValue="Network Topology">
-                                    <SelectTrigger>
+                                    <SelectTrigger className='input'>
                                         <SelectValue placeholder="Select a Network Topology" />
                                     </SelectTrigger>
                                     <SelectContent>
@@ -48,14 +49,14 @@ export default function Rede() {
                             <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">
                                 <Label htmlFor="Guard Band">Guard Band</Label>
-                                <Input id="Guard Band" type="number" placeholder="1" min="1" />
+                                <Input className='input' id="Guard Band" type="number" placeholder="1" min="1" />
                             </div>
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">
                                 <Label htmlFor="N_cores_MCI">MCI's number of cores</Label>
                                 <Select defaultValue="N_cores_MCI">
-                                    <SelectTrigger>
+                                    <SelectTrigger className='input'>
                                         <SelectValue placeholder="Select a N_cores_MCI" />
                                     </SelectTrigger>
                                     <SelectContent>
@@ -71,7 +72,7 @@ export default function Rede() {
                             <div className="grid gap-3">
                                 <Label htmlFor="Modulation">Modulation</Label>
                                 <Select defaultValue="Modulation">
-                                    <SelectTrigger>
+                                    <SelectTrigger className='input'>
                                         <SelectValue placeholder="Select a Modulation" />
                                     </SelectTrigger>
                                     <SelectContent>
@@ -87,14 +88,14 @@ export default function Rede() {
                         <div className="grid grid-cols-2 gap-4">
                         <div className="grid gap-3">
                                 <Label htmlFor="Span Length">Span Length (km)</Label>
-                                <Input id="Span Length" type="number" placeholder="80" min="80" max="100" />
+                                <Input className='input' id="Span Length" type="number" placeholder="80" min="80" max="100" />
                             </div>
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">
                                 <Label htmlFor="Traffic conn type">Traffic conn type</Label>
                                 <Select defaultValue="Traffic conn type">
-                                    <SelectTrigger>
+                                    <SelectTrigger className='input'>
                                         <SelectValue placeholder="Select a Traffic conn type" />
                                     </SelectTrigger>
                                     <SelectContent>
@@ -119,7 +120,7 @@ export default function Rede() {
                         <div className="grid gap-3">
                                 <Label htmlFor="Routing">Routing</Label>
                                 <Select defaultValue="Routing">
-                                    <SelectTrigger>
+                                    <SelectTrigger className='input'>
                                         <SelectValue placeholder="Select a Routing" />
                                     </SelectTrigger>
                                     <SelectContent>
@@ -133,7 +134,7 @@ export default function Rede() {
                             <div className="grid gap-3">
                                 <Label htmlFor="Fiber allocation">Fiber allocation</Label>
                                 <Select defaultValue="Fiber allocation">
-                                    <SelectTrigger>
+                                    <SelectTrigger className='input'>
                                         <SelectValue placeholder="Select a Fiber allocation" />
                                     </SelectTrigger>
                                     <SelectContent>
@@ -147,7 +148,7 @@ export default function Rede() {
                         <div className="grid gap-3">
                                 <Label htmlFor="Type Core selection">Type Core selection</Label>
                                 <Select defaultValue="Type Core selection">
-                                    <SelectTrigger>
+                                    <SelectTrigger className='input'>
                                         <SelectValue placeholder="Select a Type Core selection" />
                                     </SelectTrigger>
                                     <SelectContent>

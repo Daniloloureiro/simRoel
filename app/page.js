@@ -29,13 +29,12 @@ export default function Home() {
         <h3>Parameters</h3>
       </div>
       <div className="tab">
-      <div className="grid grid-cols-3 gap-4">
         <button className= "tablinks" onClick ={()=>changePage('simulacao')}>Simulation</button>
         <button className= "tablinks" onClick ={()=>changePage('rede')}>Networking</button>
         <button className= "tablinks" onClick ={()=>changePage('fisica')}>Physical</button>
       </div>
-      </div>
       {renderPage()}
+      <button className='Button'>Simulate</button>
     </main>
   );
 }
