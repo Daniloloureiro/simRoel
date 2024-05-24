@@ -1,5 +1,6 @@
-/*Pagina para parametros de camada de Rede*/
+/*Pagina para parametros de simulacao*/
 import * as React from "react"
+import "./parametros.css"
 
 import { Textarea } from "@/components/ui/textarea"
 import {
@@ -36,7 +37,7 @@ export default function Simulacao() {
                                 <Input id="N_simulations" type="number" placeholder="1" min="1" />
                             </div>
                             </div>
-                            <div className="grid grid-cols-2 gap-4">
+                            <div className="grid grid-cols-2 gap-4 ">
                             <div className="grid gap-3">
                                 <Label htmlFor="Traffic lambda">Traffic lambda</Label>
                                 <Input id="Traffic lambda" type="number" placeholder="1" min="1" />

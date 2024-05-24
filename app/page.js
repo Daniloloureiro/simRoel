@@ -26,12 +26,14 @@ export default function Home() {
         <h1>simRoel web</h1>
       </div>
       <div className="parametros">
-        <h3>Parâmetros</h3>
+        <h3>Parameters</h3>
       </div>
       <div className="tab">
-        <button className= "tablinks" onClick ={()=>changePage('simulacao')}>Simulação</button>
-        <button className= "tablinks" onClick ={()=>changePage('rede')}>Camada de Rede</button>
-        <button className= "tablinks" onClick ={()=>changePage('fisica')}>Camada Fisíca</button>
+      <div className="grid grid-cols-3 gap-4">
+        <button className= "tablinks" onClick ={()=>changePage('simulacao')}>Simulation</button>
+        <button className= "tablinks" onClick ={()=>changePage('rede')}>Networking</button>
+        <button className= "tablinks" onClick ={()=>changePage('fisica')}>Physical</button>
+      </div>
       </div>
       {renderPage()}
     </main>

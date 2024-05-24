@@ -1,24 +1,26 @@
 /*Css da parte fixa da pagina*/
 .title{
-    background-color: #3b3b3b;
+    background-color: #b3c0bc;
     text-align: center;
     padding: 20px;
     font-size:35px;
     text-shadow: 2px 4px 5px #000;
+    border: 2px solid #cccccc;
+    border-radius: 20px;
 }
 .parametros{
-    background-color: #29292c;
+    background-color: #c8e9e3;
     padding: 20px;
     font-size:20px;
-    text-shadow: 2px 4px 5px #000;
+    text-shadow: 2px 4px 5px #ad9b9b;
 }
 .tab{
     overflow: hidden;
-    border: 1px solid #ccc;
-    background-color: #3a2020;
+    border: 1px solid #f0e6e6;
+    background-color: #ebdede;
 }
 .tablinks{
-    background-color: #465847; 
+    background-color: #6a7271; 
     border: none; 
     color: white; 
     padding: 15px 32px; 
@@ -28,4 +30,7 @@
     font-size: 16px; 
     margin: 4px 2px;
     cursor: pointer; 
+    border-radius: 20px;
+    box-shadow: 2px 4px 5px #000;
+    width: 400px;  
 }
