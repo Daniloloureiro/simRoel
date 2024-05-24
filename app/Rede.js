@@ -28,13 +28,46 @@ export default function Rede() {
                     <fieldset className="grid gap-6 rounded-lg border p-4">
                         <legend className="-ml-1 px-1 text-sm font-medium">variables</legend>
                         <div className="grid gap-3">
-                            <Label htmlFor="model">insert variable data</Label>
+                            <Label htmlFor="model">insert variable network data</Label>
                         </div>
                         <div className="grid grid-cols-2 gap-4">
-                            <div className="grid gap-3">
-                                <Label htmlFor="Span Length">Span Length</Label>
-                                <Input id="Span Length" type="number" placeholder="80" />
+                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid gap-3">
+                                <Label htmlFor="Network Topology">Network Topology</Label>
+                                <Select defaultValue="Network Topology">
+                                    <SelectTrigger>
+                                        <SelectValue placeholder="Select a Network Topology" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectItem value="dt">dt</SelectItem>
+                                        <SelectItem value="nsfnet">nsfnet</SelectItem>
+                                    </SelectContent>
+                                </Select>
                             </div>
+                            </div>
+                            <div className="grid grid-cols-2 gap-4">
+                            <div className="grid gap-3">
+                                <Label htmlFor="Guard Band">Guard Band</Label>
+                                <Input id="Guard Band" type="number" placeholder="1" min="1" />
+                            </div>
+                            </div>
+                            <div className="grid grid-cols-2 gap-4">
+                            <div className="grid gap-3">
+                                <Label htmlFor="N_cores_MCI">MCI's number of cores</Label>
+                                <Select defaultValue="N_cores_MCI">
+                                    <SelectTrigger>
+                                        <SelectValue placeholder="Select a N_cores_MCI" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectItem value="1">1</SelectItem>
+                                        <SelectItem value="7">7</SelectItem>
+                                        <SelectItem value="12">12</SelectItem>
+                                        <SelectItem value="19">19</SelectItem>
+                                    </SelectContent>
+                                </Select>
+                            </div>
+                            </div>
+                            <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">
                                 <Label htmlFor="Modulation">Modulation</Label>
                                 <Select defaultValue="Modulation">
@@ -42,52 +75,89 @@ export default function Rede() {
                                         <SelectValue placeholder="Select a Modulation" />
                                     </SelectTrigger>
                                     <SelectContent>
-                                        <SelectItem value="system">System</SelectItem>
-                                        <SelectItem value="user">User</SelectItem>
-                                        <SelectItem value="assistant">Assistant</SelectItem>
+                                        <SelectItem value="4">4 DP-QAM</SelectItem>
+                                        <SelectItem value="8">8 DP-QAM</SelectItem>
+                                        <SelectItem value="16">16 DP-QAM</SelectItem>
+                                        <SelectItem value="32">32 DP-QAM</SelectItem>
+                                        <SelectItem value="64">64 DP-QAM</SelectItem>
                                     </SelectContent>
                                 </Select>
                             </div>
                         </div>
                         <div className="grid grid-cols-2 gap-4">
-                            <div className="grid gap-3">
-                                <Label htmlFor="N_Cores">N_Cores</Label>
-                                <Input id="N_Cores" type="number" placeholder="0.7" />
+                        <div className="grid gap-3">
+                                <Label htmlFor="Span Length">Span Length (km)</Label>
+                                <Input id="Span Length" type="number" placeholder="80" min="80" max="100" />
                             </div>
-                            <div className="grid gap-3">
-                                <Label htmlFor="Guard Band">Guard Band</Label>
-                                <Input id="Guard Band" type="number" placeholder="0.0" />
                             </div>
-                        </div>
-                        <div className="grid grid-cols-2 gap-4">
-                            <div className="grid gap-3">
-                                <Label htmlFor="Network Topology">Network Topology</Label>
-                                <Input id="Network Topology" type="number" placeholder="0.7" />
-                            </div>
+                            <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">
                                 <Label htmlFor="Traffic conn type">Traffic conn type</Label>
-                                <Input id="Traffic conn type" type="number" placeholder="0.0" />
+                                <Select defaultValue="Traffic conn type">
+                                    <SelectTrigger>
+                                        <SelectValue placeholder="Select a Traffic conn type" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectItem value="48">48 Gb/s</SelectItem>
+                                        <SelectItem value="120">120 Gb/s</SelectItem>
+                                        <SelectItem value="240">240 Gb/s</SelectItem>
+                                        <SelectItem value="32">480 Gb/s</SelectItem>
+                                        <SelectItem value="1.2">1.2 Tb/s</SelectItem>
+                                    </SelectContent>
+                                </Select>
                             </div>
+                        </div>
                         </div>
                     </fieldset>
                     <fieldset className="grid gap-6 rounded-lg border p-4">
                         <legend className="-ml-1 px-1 text-sm font-medium">algorithm</legend>
+                        <div className="grid gap-3">
+                            <Label htmlFor="model">insert algorithm network data</Label>
+                        </div>
                         <div className="grid grid-cols-2 gap-4">
-                            <div className="grid gap-3">
+                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid gap-3">
                                 <Label htmlFor="Routing">Routing</Label>
-                                <Input id="Routing" type="number" placeholder="0.7" />
+                                <Select defaultValue="Routing">
+                                    <SelectTrigger>
+                                        <SelectValue placeholder="Select a Routing" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectItem value="first_fit">first fit</SelectItem>
+                                        <SelectItem value="random fit">random fit</SelectItem>
+                                    </SelectContent>
+                                </Select>
                             </div>
+                            </div>
+                            <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">
-                                <Label htmlFor="Fiber Allocation">Fiber Allocation</Label>
-                                <Input id="Fiber Allocation" type="number" placeholder="0.0" />
+                                <Label htmlFor="Fiber allocation">Fiber allocation</Label>
+                                <Select defaultValue="Fiber allocation">
+                                    <SelectTrigger>
+                                        <SelectValue placeholder="Select a Fiber allocation" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectItem value="first_fit">first fit</SelectItem>
+                                        <SelectItem value="random fit">random fit</SelectItem>
+                                    </SelectContent>
+                                </Select>
                             </div>
                         </div>
                         <div className="grid grid-cols-2 gap-4">
-                            <div className="grid gap-3">
-                                <Label htmlFor="Type core selection">Type core selection</Label>
-                                <Input id="Type core selection" type="number" placeholder="0.7" />
+                        <div className="grid gap-3">
+                                <Label htmlFor="Type Core selection">Type Core selection</Label>
+                                <Select defaultValue="Type Core selection">
+                                    <SelectTrigger>
+                                        <SelectValue placeholder="Select a Type Core selection" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectItem value="first_fit">first fit</SelectItem>
+                                        <SelectItem value="random fit">random fit</SelectItem>
+                                    </SelectContent>
+                                </Select>
                             </div>
-                        </div>
+                            </div>
+                            </div>
                     </fieldset>
                 </form>
             </Card>

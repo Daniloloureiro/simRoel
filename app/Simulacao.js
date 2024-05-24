@@ -30,9 +30,11 @@ export default function Simulacao() {
                             <Label htmlFor="model">Insert simulation data</Label>
                         </div>
                         <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">
                                 <Label htmlFor="N_simulations">Number of simulations</Label>
                                 <Input id="N_simulations" type="number" placeholder="1" min="1" />
+                            </div>
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">
@@ -40,8 +42,9 @@ export default function Simulacao() {
                                 <Input id="Traffic lambda" type="number" placeholder="1" min="1" />
                             </div>
                         </div>
+                        <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">
-                                <Label htmlFor="Calc_OSRN">Calculate OSRN(dB)</Label>
+                                <Label htmlFor="Calc_OSRN">Calculate OSRN (dB)</Label>
                                 <Select defaultValue="Calc_OSRN">
                                     <SelectTrigger>
                                         <SelectValue placeholder="Select a is on or off" />
@@ -52,6 +55,8 @@ export default function Simulacao() {
                                     </SelectContent>
                                 </Select>
                             </div>
+                            </div>
+                            <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">
                                 <Label htmlFor="Calc_Crosstalk">Calculate Crosstalk(dB)</Label>
                                 <Select defaultValue="Calc_Crosstalk">
@@ -64,9 +69,11 @@ export default function Simulacao() {
                                     </SelectContent>
                                 </Select>
                             </div>
+                            </div>
+                            <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">
-                                <Label htmlFor="Intervalo de confiança">Intervalo de confiança</Label>
-                                <Select defaultValue="Intervalo de confiança">
+                                <Label htmlFor="Intervalo de Confiança">Intervalo de Confiança</Label>
+                                <Select defaultValue="Intervalo de Confiança">
                                     <SelectTrigger>
                                         <SelectValue placeholder="Select a is on or off" />
                                     </SelectTrigger>
@@ -77,7 +84,7 @@ export default function Simulacao() {
                                 </Select>
                             </div>
                         </div>
-                        
+                        </div>
                     </fieldset>
                 </form>
             </Card>
