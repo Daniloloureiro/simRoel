@@ -1,6 +1,7 @@
 /*Pagina para parametros de simulacao*/
 import * as React from "react"
 import "./parametros.css"
+import {Controller, useFormContext} from 'react-hook-form';
 
 import { Textarea } from "@/components/ui/textarea"
 import {
@@ -20,12 +21,27 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
+import {
+    Form,
+    FormControl,
+    FormDescription,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+  } from "@/components/ui/form"
 
 export default function Simulacao() {
+    const {register,control,formState:{errors}}= useFormContext();
+    
+      const Calc_OSRN=[
+        {value:'on',label:'on'},
+        {value:'off',label:'off'},
+      ];
     return (
         <main className="pt-6 pl-4 pr-4 pb-8">
             <Card className="sm:col-span-2" x-chunk="dashboard-05-chunk-0">
-                <form className="grid w-full items-start gap-6">
+            <div className="grid w-full items-start gap-6" >
                     <fieldset className="grid gap-6 rounded-lg border p-4">
                         <div className="grid gap-3">
                             <Label htmlFor="model">Insert simulation data</Label>
@@ -34,60 +50,69 @@ export default function Simulacao() {
                         <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">
                                 <Label htmlFor="N_simulations">Number of simulations</Label>
-                                <Input className='input' id="N_simulations" type="number" placeholder="1" min="1" />
+                                <Input className='input' {...register('N_simulations',{required:true})} type="number" placeholder="1" min="1" />
+                                {errors.name && <p>item obrigatorio</p>}
                             </div>
                             </div>
                             <div className="grid grid-cols-2 gap-4 ">
                             <div className="grid gap-3">
                                 <Label htmlFor="Traffic lambda">Traffic lambda</Label>
-                                <Input className='input' id="Traffic lambda" type="number" placeholder="1" min="1" />
+                                <Input className='input' {...register('Traffic lambda',{required:true})} type="number" placeholder="1" min="1" />
+                                {errors.name && <p>item obrigatorio</p>}
                             </div>
                         </div>
                         <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">
+                                <FormField
+                                control={control}
+                                name="Calc_OSRN"
+                                render={({field})=>(
+                                <FormItem>
                                 <Label htmlFor="Calc_OSRN">Calculate OSRN (dB)</Label>
-                                <Select defaultValue="Calc_OSRN">
+                                <Select onValueChange={field.onChange} defaultValue="Calc_OSRN">
+                                    <FormControl>
                                     <SelectTrigger className='input'>
-                                        <SelectValue placeholder="Select a is on or off" />
+                                        <SelectValue placeholder="Select  is on or off" />
                                     </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectItem value="on">On</SelectItem>
-                                        <SelectItem value="of">Off</SelectItem>
+                                    </FormControl>
+                                    <SelectContent >
+                                        <SelectItem value="on" >On</SelectItem>
+                                        <SelectItem value="off">Off</SelectItem>
                                     </SelectContent>
                                 </Select>
+                                </FormItem>
+                                )}
+                                />
                             </div>
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">
+                            <FormField
+                                control={control}
+                                name="Calc_Crosstalk"
+                                render={({field})=>(
+                                <FormItem>
                                 <Label htmlFor="Calc_Crosstalk">Calculate Crosstalk(dB)</Label>
-                                <Select defaultValue="Calc_Crosstalk">
+                                <Select onValueChange={field.onChange} defaultValue="Calc_Crosstalk">
+                                    <FormControl>
                                     <SelectTrigger className='input'>
                                         <SelectValue placeholder="Select a is on or off" />
                                     </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectItem value="on">On</SelectItem>
-                                        <SelectItem value="of">Off</SelectItem>
+                                    </FormControl>
+                                    <SelectContent >
+                                        <SelectItem value="on" >On</SelectItem>
+                                        <SelectItem value="off">Off</SelectItem>
                                     </SelectContent>
                                 </Select>
+                                </FormItem>
+                                )}
+                                />
                             </div>
                             </div>
-                            <div className="grid grid-cols-2 gap-4">
-                            <div className="grid gap-3">
-                                <Label htmlFor="Intervalo de Confiança">Intervalo de Confiança</Label>
-                                <Select defaultValue="Intervalo de Confiança">
-                                    <SelectTrigger className='input'>
-                                        <SelectValue placeholder="Select a is on or off" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectItem value="on">On</SelectItem>
-                                        <SelectItem value="of">Off</SelectItem>
-                                    </SelectContent>
-                                </Select>
-                            </div>
-                        </div>
                         </div>
                     </fieldset>
-                </form>
+                    
+                    </div>
             </Card>
         </main>
     )

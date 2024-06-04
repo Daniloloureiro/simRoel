@@ -2,6 +2,7 @@
 import {useState} from 'react';
 import './header.css';
 import Simulacao from './Simulacao';
+import { useForm, FormProvider } from 'react-hook-form';
 import Rede from './Rede';
 import Fisica from './Fisica';
 
@@ -20,6 +21,11 @@ export default function Home() {
       return <Fisica />
   }
   /*Código da parte fixa da página*/
+  const methods=useForm();
+  const onSubmit=(data)=>{
+    const jsonData=JSON.stringify(data,null,2);
+    console.log(jsonData);
+};
   return (
     <main >
       <div className="title">
@@ -33,8 +39,13 @@ export default function Home() {
         <button className= "tablinks" onClick ={()=>changePage('rede')}>Networking</button>
         <button className= "tablinks" onClick ={()=>changePage('fisica')}>Physical</button>
       </div>
+      <FormProvider {...methods}>
+        <form onSubmit={methods.handleSubmit(onSubmit)}>
       {renderPage()}
-      <button className='Button'>Simulate</button>
+      <button className="Button" type="submit">Simulate</button>
+      </form>
+      </FormProvider>
     </main>
   );
 }
+
