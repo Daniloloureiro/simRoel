@@ -102,19 +102,6 @@ export default function Rede() {
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">
-                                <Label htmlFor="Max_Modulation"> Max.Modulation</Label>
-                                <Select defaultValue="Modulation">
-                                    <SelectTrigger className='input'>
-                                        <SelectValue placeholder="Select a Modulation" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectItem value="4">4 DP-QAM</SelectItem>
-                                        <SelectItem value="8">8 DP-QAM</SelectItem>
-                                        <SelectItem value="16">16 DP-QAM</SelectItem>
-                                        <SelectItem value="32">32 DP-QAM</SelectItem>
-                                        <SelectItem value="64">64 DP-QAM</SelectItem>
-                                    </SelectContent>
-                                </Select>
                                 <FormField
                                 control={control}
                                 name="Max_Modulation"

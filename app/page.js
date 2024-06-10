@@ -1,5 +1,5 @@
 'use client';
-import {useState} from 'react';
+import {createContext,useState} from 'react';
 import './header.css';
 import Simulacao from './Simulacao';
 import { useForm, FormProvider } from 'react-hook-form';
@@ -20,12 +20,13 @@ export default function Home() {
     else
       return <Fisica />
   }
-  /*Código da parte fixa da página*/
+  /*Código de geeração de json*/
   const methods=useForm();
   const onSubmit=(data)=>{
     const jsonData=JSON.stringify(data,null,2);
     console.log(jsonData);
 };
+/*Código da parte fixa da página*/
   return (
     <main >
       <div className="title">
@@ -42,7 +43,9 @@ export default function Home() {
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
       {renderPage()}
+      <div>
       <button className="Button" type="submit">Simulate</button>
+      </div>
       </form>
       </FormProvider>
     </main>
