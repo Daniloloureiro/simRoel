@@ -1,24 +1,24 @@
 'use client';
 import {createContext,useState} from 'react';
 import './header.css';
-import Simulacao from './Simulacao';
+import Simulation from './Simulation';
 import { useForm, FormProvider } from 'react-hook-form';
-import Rede from './Rede';
-import Fisica from './Fisica';
+import Networking from './Networking';
+import Physical from './Physical';
 
 export default function Home() {
   /*Código para qual página de parâmetro reinderizar*/ 
-  const [currentPage, setCurrentPage]=useState('simulacao')
+  const [currentPage, setCurrentPage]=useState('simulation')
   const changePage=(page)=>{
     setCurrentPage(page)
   }
   const renderPage=()=>{
-    if(currentPage==='simulacao')
-      return <Simulacao />
-    else if(currentPage==='rede')
-      return <Rede />
+    if(currentPage==='simulation')
+      return <Simulation />
+    else if(currentPage==='networking')
+      return <Networking />
     else
-      return <Fisica />
+      return <Physical />
   }
   /*Código de geeração de json*/
   const methods=useForm();
@@ -32,13 +32,13 @@ export default function Home() {
       <div className="title">
         <h1>simRoel web</h1>
       </div>
-      <div className="parametros">
+      <div className="parameters">
         <h3>Parameters</h3>
       </div>
       <div className="tab">
-        <button className= "tablinks" onClick ={()=>changePage('simulacao')}>Simulation</button>
-        <button className= "tablinks" onClick ={()=>changePage('rede')}>Networking</button>
-        <button className= "tablinks" onClick ={()=>changePage('fisica')}>Physical</button>
+        <button className= "tablinks" onClick ={()=>changePage('simulation')}>Simulation</button>
+        <button className= "tablinks" onClick ={()=>changePage('networking')}>Networking</button>
+        <button className= "tablinks" onClick ={()=>changePage('physical')}>Physical</button>
       </div>
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
