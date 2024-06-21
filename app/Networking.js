@@ -1,8 +1,16 @@
 /*Pagina para parametros de camada de Rede*/
-import * as React from "react";
+import  React, { useState } from "react";
 import './parameters.css';
 import {useFormContext} from 'react-hook-form';
 import { Button } from "@/components/ui/button"
+import {
+    DropdownMenu,
+    DropdownMenuCheckboxItem,
+    DropdownMenuContent,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+  } from "@/components/ui/dropdown-menu"
 import { Textarea } from "@/components/ui/textarea"
 import {
     Card,
@@ -32,7 +40,17 @@ import {
   } from "@/components/ui/form";
 
 export default function Networking() {
-    const {register,control}= useFormContext();
+    const {register,control}= useFormContext({
+        defaultValue:{
+            Modulations:[],
+            options:[],
+        }
+    });
+    const [show4DPQAM, setShow4DPQAM] = useState(false);
+    const [show8DPQAM, setShow8DPQAM] = useState(false);
+    const [show16DPQAM, setShow16DPQAM] = useState(false);
+    const [show32DPQAM, setShow32DPQAM] = useState(false);
+    const [show64DPQAM, setShow64DPQAM] = useState(false);
     return (
         <main className="pt-6 pl-4 pr-4 pb-8">
             <Card className="sm:col-span-2" x-chunk="dashboard-05-chunk-0">
@@ -106,15 +124,15 @@ export default function Networking() {
                                 render={({field})=>(
                                 <FormItem>
                                 <Label htmlFor="Max_Modulation">Max.Modulation</Label>
-                                <Select onValueChange={field.onChange} defaultValue="Max_Modulation">
+                                <Select onValueChange={field.onChange} defaultValue="Max_Modulation" isMuti>
                                     <FormControl>
                                     <SelectTrigger className='input'>
                                         <SelectValue placeholder="Select a option" />
                                     </SelectTrigger>
                                     </FormControl>
                                     <SelectContent >
-                                    <SelectItem value="4">4 DP-QAM</SelectItem>
-                                        <SelectItem value="8">8 DP-QAM</SelectItem>
+                                    <SelectItem value="4" {...register("options")}>4 DP-QAM</SelectItem>
+                                        <SelectItem value="8"{...register("options")}>8 DP-QAM</SelectItem>
                                         <SelectItem value="16">16 DP-QAM</SelectItem>
                                         <SelectItem value="32">32 DP-QAM</SelectItem>
                                         <SelectItem value="64">64 DP-QAM</SelectItem>
@@ -149,13 +167,91 @@ export default function Networking() {
                                         <SelectItem value="48">48 Gb/s</SelectItem>
                                         <SelectItem value="120">120 Gb/s</SelectItem>
                                         <SelectItem value="240">240 Gb/s</SelectItem>
-                                        <SelectItem value="32">480 Gb/s</SelectItem>
-                                        <SelectItem value="1.2">1.2 Tb/s</SelectItem>
+                                        <SelectItem value="480">480 Gb/s</SelectItem>
+                                        <SelectItem value="1200">1200 Gb/s</SelectItem>
                                     </SelectContent>
                                 </Select>
                                 </FormItem>
                                 )}
                                 />
+                            </div>
+                        </div>
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="grid gap-3">
+                            <Label htmlFor="Max_Modulation">Max.Modulation</Label>
+                                <div>
+                                <label>
+                                    <input type="checkbox" value="4_DPQAM" {...register("Modulations")}/>
+                                    4DP-QAM
+                                </label>
+                                </div>
+                                <div>
+                                <label>
+                                    <input type="checkbox" value="8_DPQAM" {...register("Modulations")}/>
+                                    8DP-QAM
+                                </label>
+                                </div>
+                                <div>
+                                <label>
+                                    <input type="checkbox" value="16_DPQAM" {...register("Modulations")}/>
+                                    16DP-QAM
+                                </label>
+                                </div>
+                                <div>
+                                <label>
+                                    <input type="checkbox" value="32_DPQAM" {...register("Modulations")}/>
+                                    32DP-QAM
+                                </label>
+                                </div>
+                                <div>
+                                <label>
+                                    <input type="checkbox" value="64_DPQAM" {...register("Modulations")}/>
+                                    64DP-QAM
+                                </label>
+                                </div>
+                            </div>
+                            </div>
+                            <div className="grid grid-cols-2 gap-4">
+                            <div className="grid gap-3">
+                            <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                            <Button variant="outline">Max.Modulation</Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent className="w-56">
+                            <DropdownMenuLabel>Modulations</DropdownMenuLabel>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuCheckboxItem value="4"{...register("options")}
+                            checked={show4DPQAM}
+                            onCheckedChange={show4DPQAM => setShow4DPQAM(show4DPQAM)}
+                            >
+                            4DP-QAM
+                            </DropdownMenuCheckboxItem>
+                            <DropdownMenuCheckboxItem value="8" {...register("options")}
+                            checked={show8DPQAM}
+                            onCheckedChange={show8DPQAM => setShow8DPQAM(show8DPQAM)}
+                            >
+                            8DP-QAM
+                            </DropdownMenuCheckboxItem>
+                            <DropdownMenuCheckboxItem
+                            checked={show16DPQAM}
+                            onCheckedChange={show16DPQAM => setShow16DPQAM(show16DPQAM)}
+                            >
+                            16DP-QAM
+                            </DropdownMenuCheckboxItem>
+                            <DropdownMenuCheckboxItem
+                            checked={show32DPQAM}
+                            onCheckedChange={show32DPQAM => setShow32DPQAM(show32DPQAM)}
+                            >
+                            32DP-QAM
+                            </DropdownMenuCheckboxItem>
+                            <DropdownMenuCheckboxItem
+                            checked={show64DPQAM}
+                            onCheckedChange={show64DPQAM => setShow64DPQAM(show64DPQAM)}
+                            >
+                            64DP-QAM
+                            </DropdownMenuCheckboxItem>
+                            </DropdownMenuContent>
+                        </DropdownMenu>
                             </div>
                         </div>
                         </div>
@@ -245,3 +341,4 @@ export default function Networking() {
         </main>
     )
 }
+                            

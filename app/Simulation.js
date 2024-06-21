@@ -89,7 +89,7 @@ export default function Simulation() {
                                 name="Calc_Crosstalk"
                                 render={({field})=>(
                                 <FormItem>
-                                <Label htmlFor="Calc_Crosstalk">Calculate Crosstalk(dB)</Label>
+                                <Label htmlFor="Calc_Crosstalk">Calculate Crosstalk intercore(dB)</Label>
                                 <Select onValueChange={field.onChange} defaultValue="Calc_Crosstalk">
                                     <FormControl>
                                     <SelectTrigger className='input'>
@@ -108,7 +108,31 @@ export default function Simulation() {
                             </div>
                         </div>
                     </fieldset>
-                    
+                    <fieldset className="grid gap-6 rounded-lg border p-4">
+                        <div className="grid gap-3">
+                            <Label htmlFor="model">Insert load data</Label>
+                        </div>
+                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="grid gap-3">
+                                <Label htmlFor="Min_load">Minimum load</Label>
+                                <Input className='input' {...register('Min_load',{required:true})} type="number" placeholder="1" min="1" />
+                            </div>
+                            </div>
+                            <div className="grid grid-cols-2 gap-4">
+                            <div className="grid gap-3">
+                                <Label htmlFor="Max_load">Maximum load</Label>
+                                <Input className='input' {...register('Max_load',{required:true})} type="number" placeholder="1" min="1" />
+                            </div>
+                            </div>
+                            <div className="grid grid-cols-2 gap-4">
+                            <div className="grid gap-3">
+                                <Label htmlFor="load_range">load range</Label>
+                                <Input className='input' {...register('load_range',{required:true})} type="number" placeholder="1" min="1" />
+                            </div>
+                            </div>
+                            </div>
+                    </fieldset>
                     </div>
             </Card>
         </main>

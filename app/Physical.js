@@ -47,11 +47,11 @@ export default function Physical() {
                         <div className="grid gap-3">
                                 <FormField
                                 control={control}
-                                name="Bandwidth"
+                                name="Total_Bandwidth"
                                 render={({field})=>(
                                 <FormItem>
-                                <Label htmlFor="Bandwidth">Bandwidth</Label>
-                                <Select onValueChange={field.onChange} defaultValue="Bandwidth">
+                                <Label htmlFor="Total_Bandwidth">Total Bandwidth</Label>
+                                <Select onValueChange={field.onChange} defaultValue="Total_Bandwidth">
                                     <FormControl>
                                     <SelectTrigger className='input'>
                                         <SelectValue placeholder="Select a option" />
@@ -69,7 +69,7 @@ export default function Physical() {
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">
-                                <Label htmlFor="Slot size">Slot size(Ghz)</Label>
+                                <Label htmlFor="Slot size">Slot size(GHz)</Label>
                                 <Input className='input' {...register("Slot Size")}type="number" placeholder="12.5" min="12.5" />
                             </div>
                         </div>
@@ -154,8 +154,8 @@ export default function Physical() {
                                     </SelectTrigger>
                                     </FormControl>
                                     <SelectContent >
-                                    <SelectItem value="1.2">1.2cm⁻¹</SelectItem>
-                                    <SelectItem value="5.84">5.84mm⁻¹</SelectItem>
+                                    <SelectItem value="1.2">1.2 x 10⁻²m⁻¹</SelectItem>
+                                    <SelectItem value="5.84">5.84 x 10⁻³m⁻¹</SelectItem>
                                     </SelectContent>
                                 </Select>
                                 </FormItem>
