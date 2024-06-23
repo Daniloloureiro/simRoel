@@ -3,6 +3,7 @@ import  React, { useState } from "react";
 import './parameters.css';
 import {useFormContext} from 'react-hook-form';
 import { Button } from "@/components/ui/button"
+import { Checkbox } from "@/components/ui/checkbox"
 import {
     DropdownMenu,
     DropdownMenuCheckboxItem,
@@ -38,6 +39,7 @@ import {
     FormLabel,
     FormMessage,
   } from "@/components/ui/form";
+  
 
 export default function Networking() {
     const {register,control}= useFormContext({
@@ -46,11 +48,6 @@ export default function Networking() {
             options:[],
         }
     });
-    const [show4DPQAM, setShow4DPQAM] = useState(false);
-    const [show8DPQAM, setShow8DPQAM] = useState(false);
-    const [show16DPQAM, setShow16DPQAM] = useState(false);
-    const [show32DPQAM, setShow32DPQAM] = useState(false);
-    const [show64DPQAM, setShow64DPQAM] = useState(false);
     return (
         <main className="pt-6 pl-4 pr-4 pb-8">
             <Card className="sm:col-span-2" x-chunk="dashboard-05-chunk-0">
@@ -118,31 +115,45 @@ export default function Networking() {
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">
-                                <FormField
-                                control={control}
-                                name="Max_Modulation"
-                                render={({field})=>(
-                                <FormItem>
-                                <Label htmlFor="Max_Modulation">Max.Modulation</Label>
-                                <Select onValueChange={field.onChange} defaultValue="Max_Modulation" isMuti>
-                                    <FormControl>
-                                    <SelectTrigger className='input'>
-                                        <SelectValue placeholder="Select a option" />
-                                    </SelectTrigger>
-                                    </FormControl>
-                                    <SelectContent >
-                                    <SelectItem value="4" {...register("options")}>4 DP-QAM</SelectItem>
-                                        <SelectItem value="8"{...register("options")}>8 DP-QAM</SelectItem>
-                                        <SelectItem value="16">16 DP-QAM</SelectItem>
-                                        <SelectItem value="32">32 DP-QAM</SelectItem>
-                                        <SelectItem value="64">64 DP-QAM</SelectItem>
-                                    </SelectContent>
-                                </Select>
-                                </FormItem>
-                                )}
-                                />
+                            <DropdownMenu>
+                            <DropdownMenuTrigger asChild className="input"> 
+                            <Button variant="outline">Max.Modulation</Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent className="w-56">
+                            <DropdownMenuLabel>Modulations</DropdownMenuLabel>
+                            <DropdownMenuSeparator />
+                                <div>
+                                <label className="relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                                    <input  type="checkbox" value="4" {...register("Modulation")} />
+                                    4DP-QAM
+                                </label>
+                                </div>
+                                <div>
+                                <label className="relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                                    <input type="checkbox" value="8" {...register("Modulation")} />
+                                    8DP-QAM
+                                </label>
+                                </div>
+                                <div>
+                                <label className="relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                                    <input type="checkbox" value="16" {...register("Modulation")} />
+                                    16DP-QAM
+                                </label>
+                                </div>
+                                <label className="relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                                    <input type="checkbox" value="32" {...register("Modulation")}  />
+                                    32DP-QAM
+                                </label>
+                                <div>
+                                <label className="relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                                    <input type="checkbox" value="64" {...register("Modulation")}  />
+                                    64DP-QAM
+                                </label>
+                                </div>
+                            </DropdownMenuContent>
+                            </DropdownMenu>
                             </div>
-                        </div>
+                            </div>
                         <div className="grid grid-cols-2 gap-4">
                         <div className="grid gap-3">
                                 <Label htmlFor="Span Length">Span Length (km)</Label>
@@ -176,90 +187,9 @@ export default function Networking() {
                                 />
                             </div>
                         </div>
-                        <div className="grid grid-cols-2 gap-4">
-                            <div className="grid gap-3">
-                            <Label htmlFor="Max_Modulation">Max.Modulation</Label>
-                                <div>
-                                <label>
-                                    <input type="checkbox" value="4_DPQAM" {...register("Modulations")}/>
-                                    4DP-QAM
-                                </label>
-                                </div>
-                                <div>
-                                <label>
-                                    <input type="checkbox" value="8_DPQAM" {...register("Modulations")}/>
-                                    8DP-QAM
-                                </label>
-                                </div>
-                                <div>
-                                <label>
-                                    <input type="checkbox" value="16_DPQAM" {...register("Modulations")}/>
-                                    16DP-QAM
-                                </label>
-                                </div>
-                                <div>
-                                <label>
-                                    <input type="checkbox" value="32_DPQAM" {...register("Modulations")}/>
-                                    32DP-QAM
-                                </label>
-                                </div>
-                                <div>
-                                <label>
-                                    <input type="checkbox" value="64_DPQAM" {...register("Modulations")}/>
-                                    64DP-QAM
-                                </label>
-                                </div>
                             </div>
-                            </div>
-                            <div className="grid grid-cols-2 gap-4">
-                            <div className="grid gap-3">
-                            <DropdownMenu>
-                            <DropdownMenuTrigger asChild>
-                            <Button variant="outline">Max.Modulation</Button>
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent className="w-56">
-                            <DropdownMenuLabel>Modulations</DropdownMenuLabel>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuCheckboxItem value="4"{...register("options")}
-                            checked={show4DPQAM}
-                            onCheckedChange={show4DPQAM => setShow4DPQAM(show4DPQAM)}
-                            >
-                            4DP-QAM
-                            </DropdownMenuCheckboxItem>
-                            <DropdownMenuCheckboxItem value="8" {...register("options")}
-                            checked={show8DPQAM}
-                            onCheckedChange={show8DPQAM => setShow8DPQAM(show8DPQAM)}
-                            >
-                            8DP-QAM
-                            </DropdownMenuCheckboxItem>
-                            <DropdownMenuCheckboxItem
-                            checked={show16DPQAM}
-                            onCheckedChange={show16DPQAM => setShow16DPQAM(show16DPQAM)}
-                            >
-                            16DP-QAM
-                            </DropdownMenuCheckboxItem>
-                            <DropdownMenuCheckboxItem
-                            checked={show32DPQAM}
-                            onCheckedChange={show32DPQAM => setShow32DPQAM(show32DPQAM)}
-                            >
-                            32DP-QAM
-                            </DropdownMenuCheckboxItem>
-                            <DropdownMenuCheckboxItem
-                            checked={show64DPQAM}
-                            onCheckedChange={show64DPQAM => setShow64DPQAM(show64DPQAM)}
-                            >
-                            64DP-QAM
-                            </DropdownMenuCheckboxItem>
-                            </DropdownMenuContent>
-                        </DropdownMenu>
-                            </div>
-                        </div>
-                        </div>
                     </fieldset>
-                    <fieldset className="grid gap-6 rounded-lg border p-4">
-                        <div className="grid gap-3">
-                            <Label htmlFor="model">insert allocation algorithm data</Label>
-                        </div>
+                    <fieldset className="grid gap-6 rounded-lg border p-4">npm 
                         <div className="grid grid-cols-2 gap-4">
                         <div className="grid grid-cols-2 gap-4">
                         <div className="grid gap-3">
@@ -341,4 +271,3 @@ export default function Networking() {
         </main>
     )
 }
-                            
