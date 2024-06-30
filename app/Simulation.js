@@ -1,19 +1,8 @@
 /*Pagina para parametros de simulacao*/
 import * as React from "react";
-import { useContext } from 'react';
 import "./parameters.css"
-import {Controller, useFormContext} from 'react-hook-form';
-
-
-import { Textarea } from "@/components/ui/textarea"
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card"
+import {useFormContext} from 'react-hook-form';
+import {Card} from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import {
@@ -24,13 +13,9 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import {
-    Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
-    FormLabel,
-    FormMessage,
   } from "@/components/ui/form"
 
 export default function Simulation() {
@@ -40,9 +25,6 @@ export default function Simulation() {
             <Card className="sm:col-span-2" x-chunk="dashboard-05-chunk-0">
             <div className="grid w-full items-start gap-6" >
                     <fieldset className="grid gap-6 rounded-lg border p-4">
-                        <div className="grid gap-3">
-                            <Label htmlFor="model">Insert data</Label>
-                        </div>
                         <div className="grid grid-cols-2 gap-4">
                         <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">
@@ -78,7 +60,7 @@ export default function Simulation() {
                             <div className="grid grid-cols-2 gap-4 ">
                             <div className="grid gap-3">
                                 <Label htmlFor="Traffic lambda">Traffic lambda</Label>
-                                <Input className='input' {...register('Traffic lambda',{required:true})} type="number" placeholder="1" min="1" />
+                                <Input className='input' {...register('Traffic_lambda',{required:true})} type="number" placeholder="1" min="1" />
                                 
                             </div>
                         </div>
@@ -109,9 +91,6 @@ export default function Simulation() {
                         </div>
                     </fieldset>
                     <fieldset className="grid gap-6 rounded-lg border p-4">
-                        <div className="grid gap-3">
-                            <Label htmlFor="model">Insert load data</Label>
-                        </div>
                         <div className="grid grid-cols-2 gap-4">
                         <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">

@@ -1,26 +1,16 @@
 /*Pagina para parametros de camada de Rede*/
-import  React, { useState } from "react";
+import * as React from "react";
 import './parameters.css';
 import {useFormContext} from 'react-hook-form';
 import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
 import {
     DropdownMenu,
-    DropdownMenuCheckboxItem,
     DropdownMenuContent,
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
   } from "@/components/ui/dropdown-menu"
-import { Textarea } from "@/components/ui/textarea"
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card"
+import { Card} from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import {
@@ -31,13 +21,9 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import {
-    Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
-    FormLabel,
-    FormMessage,
   } from "@/components/ui/form";
   
 
@@ -46,6 +32,7 @@ export default function Networking() {
         defaultValue:{
             Modulations:[],
             options:[],
+            Bit_Raider:[],
         }
     });
     return (
@@ -84,7 +71,7 @@ export default function Networking() {
                             <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">
                                 <Label htmlFor="Guard Band">Guard Band</Label>
-                                <Input className='input' {...register("Guard Band")}  type="number" placeholder="1" min="1" />
+                                <Input className='input' {...register("Guard_Band")}  type="number" placeholder="1" min="1" />
                             </div>
                             </div>
                             <div className="grid grid-cols-2 gap-4">
@@ -157,34 +144,48 @@ export default function Networking() {
                         <div className="grid grid-cols-2 gap-4">
                         <div className="grid gap-3">
                                 <Label htmlFor="Span Length">Span Length (km)</Label>
-                                <Input className='input' {...register("Span Length")} type="number" placeholder="80" min="80" max="100" />
+                                <Input className='input' {...register("Span_Length")} type="number" placeholder="80" min="80" max="100" />
                             </div>
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">
-                                <FormField
-                                control={control}
-                                name="Traffic_conn_type"
-                                render={({field})=>(
-                                <FormItem>
-                                <Label htmlFor="Traffic_conn_type">Traffic conn type</Label>
-                                <Select onValueChange={field.onChange} defaultValue="Traffic_conn_type">
-                                    <FormControl>
-                                    <SelectTrigger className='input'>
-                                        <SelectValue placeholder="Select a option" />
-                                    </SelectTrigger>
-                                    </FormControl>
-                                    <SelectContent >
-                                        <SelectItem value="48">48 Gb/s</SelectItem>
-                                        <SelectItem value="120">120 Gb/s</SelectItem>
-                                        <SelectItem value="240">240 Gb/s</SelectItem>
-                                        <SelectItem value="480">480 Gb/s</SelectItem>
-                                        <SelectItem value="1200">1200 Gb/s</SelectItem>
-                                    </SelectContent>
-                                </Select>
-                                </FormItem>
-                                )}
-                                />
+                            <DropdownMenu>
+                            <DropdownMenuTrigger asChild className="input"> 
+                            <Button variant="outline">Bit raider</Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent className="w-56">
+                            <DropdownMenuLabel>Bit Raider</DropdownMenuLabel>
+                            <DropdownMenuSeparator />
+                                <div>
+                                <label className="relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                                    <input  type="checkbox" value="48" {...register("Bit_Raider")} />
+                                    48 Gb/s
+                                </label>
+                                </div>
+                                <div>
+                                <label className="relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                                    <input type="checkbox" value="120" {...register("Bit_Raider")} />
+                                    120 Gb/s
+                                </label>
+                                </div>
+                                <div>
+                                <label className="relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                                    <input type="checkbox" value="240" {...register("Bit_Raider")} />
+                                    240 Gb/s
+                                </label>
+                                </div>
+                                <label className="relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                                    <input type="checkbox" value="480" {...register("Bit_Raider")}  />
+                                    480 Gb/s
+                                </label>
+                                <div>
+                                <label className="relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                                    <input type="checkbox" value="1200" {...register("Bit_Raider")}  />
+                                    1200 Gb/s
+                                </label>
+                                </div>
+                            </DropdownMenuContent>
+                            </DropdownMenu>
                             </div>
                         </div>
                             </div>

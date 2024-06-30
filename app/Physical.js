@@ -2,16 +2,7 @@
 import * as React from "react"
 import './parameters.css'
 import {useFormContext} from 'react-hook-form';
-
-import { Textarea } from "@/components/ui/textarea"
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card"
+import {Card} from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import {
@@ -22,13 +13,9 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import {
-    Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
-    FormLabel,
-    FormMessage,
   } from "@/components/ui/form"
 
 export default function Physical() {
@@ -39,9 +26,6 @@ export default function Physical() {
             <Card className="sm:col-span-2" x-chunk="dashboard-05-chunk-0">
                 <div className="grid w-full items-start gap-6" >
                     <fieldset className="grid gap-6 rounded-lg border p-4">
-                        <div className="grid gap-3">
-                            <Label htmlFor="model">Insert data</Label>
-                        </div>
                         <div className="grid grid-cols-2 gap-4">
                         <div className="grid grid-cols-2 gap-4">
                         <div className="grid gap-3">
@@ -70,25 +54,25 @@ export default function Physical() {
                             <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">
                                 <Label htmlFor="Slot size">Slot size(GHz)</Label>
-                                <Input className='input' {...register("Slot Size")}type="number" placeholder="12.5" min="12.5" />
+                                <Input className='input' {...register("Slot_Size")}type="number" placeholder="12.5" min="12.5" />
                             </div>
                         </div>
                         <div className="grid grid-cols-2 gap-4">
                         <div className="grid gap-3">
                                 <Label htmlFor="Node Loss">Node Loss(dB)</Label>
-                                <Input className='input' {...register("Node Loss")} type="number" placeholder="16" min="16" />
+                                <Input className='input' {...register("Node_Loss")} type="number" placeholder="16" min="16" />
                             </div>
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">
                                 <Label htmlFor="Fiber Loss Coefficient">Fiber Loss Coefficient(dB/km)</Label>
-                                <Input className='input' {...register("Fiber Loss Coefficient")} type="number" placeholder="1" min="1" />
+                                <Input className='input' {...register("Fiber_Loss_Coefficient")} type="number" placeholder="1" min="1" />
                             </div>
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">
                                 <Label htmlFor="Noise Figure">Noise Figure(dB)</Label>
-                                <Input className='input' {...register("Nose Figure")} type="number" placeholder="5.5" min="5.5" />
+                                <Input className='input' {...register("Nose_Figure")} type="number" placeholder="5.5" min="5.5" />
                             </div>
                             </div>
                             <div className="grid grid-cols-2 gap-4">
@@ -118,25 +102,25 @@ export default function Physical() {
                             <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">
                                 <Label htmlFor="Reference Band">Reference Band(Ghz)</Label>
-                                <Input className='input' {...register("Reference Band")} type="number" placeholder="12.5" min="12.5" />
+                                <Input className='input' {...register("Reference_Band")} type="number" placeholder="12.5" min="12.5" />
                             </div>
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">
                                 <Label htmlFor="Bending Radius">Bending Radius(m)</Label>
-                                <Input className='input'{...register("Bending Radius")}type="number" placeholder="1" min="1" />
+                                <Input className='input'{...register("Bending_Radius")}type="number" placeholder="1" min="1" />
                             </div>
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">
                                 <Label htmlFor="Coupling Coefficient">Coupling Coefficient(dB/Km)</Label>
-                                <Input className='input' {...register("Coupling Coefficient")} type="number" placeholder="0.2" min="0.2" />
+                                <Input className='input' {...register("Coupling_Coefficient")} type="number" placeholder="0.2" min="0.2" />
                             </div>
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">
                                 <Label htmlFor="Core Pitch">Core Pitch(µm)</Label>
-                                <Input className='input' {...register("Core Pitch")} type="number" placeholder="45" min="45" />
+                                <Input className='input' {...register("Core_Pitch")} type="number" placeholder="45" min="45" />
                             </div>
                             </div>
                             <div className="grid grid-cols-2 gap-4">

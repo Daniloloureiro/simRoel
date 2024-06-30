@@ -1,5 +1,5 @@
 'use client';
-import {createContext,useState} from 'react';
+import {useState} from 'react';
 import './header.css';
 import Simulation from './Simulation';
 import { useForm, FormProvider } from 'react-hook-form';
@@ -20,7 +20,7 @@ export default function Home() {
     else
       return <Physical />
   }
-  /*Código de geeração de json*/
+  /*Código de geração de json*/
   const methods=useForm();
   const onSubmit=(data)=>{
     const jsonData=JSON.stringify(data,null,2);
