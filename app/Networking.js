@@ -32,7 +32,7 @@ export default function Networking() {
         defaultValue:{
             Modulations:[],
             options:[],
-            Bit_Raider:[],
+            BitRate:[],
         }
     });
     return (
@@ -151,36 +151,36 @@ export default function Networking() {
                             <div className="grid gap-3">
                             <DropdownMenu>
                             <DropdownMenuTrigger asChild className="input"> 
-                            <Button variant="outline">Bit raider</Button>
+                            <Button variant="outline">BitRate</Button>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent className="w-56">
-                            <DropdownMenuLabel>Bit Raider</DropdownMenuLabel>
+                            <DropdownMenuLabel>BitRate</DropdownMenuLabel>
                             <DropdownMenuSeparator />
                                 <div>
                                 <label className="relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
-                                    <input  type="checkbox" value="48" {...register("Bit_Raider")} />
+                                    <input  type="checkbox" value="48" {...register("BitRate")} />
                                     48 Gb/s
                                 </label>
                                 </div>
                                 <div>
                                 <label className="relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
-                                    <input type="checkbox" value="120" {...register("Bit_Raider")} />
+                                    <input type="checkbox" value="120" {...register("BitRate")} />
                                     120 Gb/s
                                 </label>
                                 </div>
                                 <div>
                                 <label className="relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
-                                    <input type="checkbox" value="240" {...register("Bit_Raider")} />
+                                    <input type="checkbox" value="240" {...register("BitRate")} />
                                     240 Gb/s
                                 </label>
                                 </div>
                                 <label className="relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
-                                    <input type="checkbox" value="480" {...register("Bit_Raider")}  />
+                                    <input type="checkbox" value="480" {...register("BitRate")}  />
                                     480 Gb/s
                                 </label>
                                 <div>
                                 <label className="relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
-                                    <input type="checkbox" value="1200" {...register("Bit_Raider")}  />
+                                    <input type="checkbox" value="1200" {...register("BitRate")}  />
                                     1200 Gb/s
                                 </label>
                                 </div>
