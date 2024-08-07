@@ -190,7 +190,7 @@ export default function Networking() {
                         </div>
                             </div>
                     </fieldset>
-                    <fieldset className="grid gap-6 rounded-lg border p-4">npm 
+                    <fieldset className="grid gap-6 rounded-lg border p-4">
                         <div className="grid grid-cols-2 gap-4">
                         <div className="grid grid-cols-2 gap-4">
                         <div className="grid gap-3">
