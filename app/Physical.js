@@ -33,41 +33,79 @@ export default function Physical() {
                                 control={control}
                                 name="Total_Bandwidth"
                                 render={({field})=>(
-                                <FormItem>
-                                <Label htmlFor="Total_Bandwidth">Total Bandwidth</Label>
-                                <Select onValueChange={field.onChange} defaultValue="Total_Bandwidth">
-                                    <FormControl>
-                                    <SelectTrigger className='input'>
-                                        <SelectValue placeholder="Select a option" />
-                                    </SelectTrigger>
-                                    </FormControl>
-                                    <SelectContent >
-                                    <SelectItem value="4">C Band(4 THz)</SelectItem>
-                                    <SelectItem value="9">S Band(9 THz)</SelectItem>
-                                    </SelectContent>
-                                </Select>
-                                </FormItem>
+                                    <FormItem>
+                                        <Label htmlFor="Total_Bandwidth">Total Bandwidth</Label>
+                                        <Select
+                                            onValueChange={(value) => {
+                                                field.onChange(value);
+                                                fetch("/set_bandwidth", {
+                                                    method: "POST",
+                                                    headers: {
+                                                        "Content-Type": "application/json",
+                                                    },
+                                                    body: JSON.stringify({ bandwidth: value }),
+                                                })
+                                                    .then(response => response.json())
+                                                    .then(data => console.log("Success:", data))
+                                                    .catch(error => console.error("Error:", error));
+                                            }}
+                                            defaultValue="Total_Bandwidth"
+                                        >
+                                            <FormControl>
+                                                <SelectTrigger className="input">
+                                                    <SelectValue placeholder="Select a option" />
+                                                </SelectTrigger>
+                                            </FormControl>
+                                            <SelectContent>
+                                                <SelectItem value="4">C Band(4 THz)</SelectItem>
+                                                <SelectItem value="9">S Band(9 THz)</SelectItem>
+                                            </SelectContent>
+                                        </Select>
+                                    </FormItem>
+
                                 )}
                                 />
                             </div>
                             </div>
                             <div className="grid grid-cols-2 gap-4">
-                            <div className="grid gap-3">
-                                <Label htmlFor="Slot size">Slot size(GHz)</Label>
-                                <Input className='input' {...register("Slot_Size")}type="number" placeholder="12.5" min="12.5" />
-                            </div>
-                        </div>
-                        <div className="grid grid-cols-2 gap-4">
-                        <div className="grid gap-3">
-                                <Label htmlFor="Node Loss">Node Loss(dB)</Label>
-                                <Input className='input' {...register("Node_Loss")} type="number" placeholder="16" min="16" />
-                            </div>
+                                <div className="grid gap-3">
+                                    <Label htmlFor="Slot size">Slot size (GHz)</Label>
+                                    <Input
+                                        className='input'
+                                        {...register("Slot_Size")}
+                                        type="number"
+                                        placeholder="12.5"
+                                        min="12.5"
+                                        onChange={(e) => {
+                                            const value = e.target.value;
+                                            // Make sure to parse value as float
+                                            fetch("http://localhost:8000/set_slot_size", {
+                                                method: "POST",
+                                                headers: {
+                                                    "Content-Type": "application/json",
+                                                },
+                                                body: JSON.stringify({slot_size: parseFloat(value)}),
+                                            })
+                                                .then(response => response.json())
+                                                .then(data => console.log("Success:", data))
+                                                .catch(error => console.error("Error:", error));
+                                        }}
+                                    />
+                                </div>
                             </div>
                             <div className="grid grid-cols-2 gap-4">
-                            <div className="grid gap-3">
-                                <Label htmlFor="Fiber Loss Coefficient">Fiber Loss Coefficient(dB/km)</Label>
-                                <Input className='input' {...register("Fiber_Loss_Coefficient")} type="number" placeholder="1" min="1" />
+                                <div className="grid gap-3">
+                                    <Label htmlFor="Node Loss">Node Loss(dB)</Label>
+                                    <Input className='input' {...register("Node_Loss")} type="number" placeholder="16"
+                                           min="16"/>
+                                </div>
                             </div>
+                            <div className="grid grid-cols-2 gap-4">
+                                <div className="grid gap-3">
+                                    <Label htmlFor="Fiber Loss Coefficient">Fiber Loss Coefficient(dB/km)</Label>
+                                    <Input className='input' {...register("Fiber_Loss_Coefficient")} type="number"
+                                           placeholder="1" min="1"/>
+                                </div>
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">
