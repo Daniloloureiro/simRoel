@@ -3,11 +3,26 @@ from fastapi import FastAPI
 from files.parameters import Params
 from files.file_manager import FileManager
 from pydantic import BaseModel
-
+from fastapi.middleware.cors import CORSMiddleware
 
 file_manager = FileManager()
 params = Params()
 app = FastAPI()
+
+origins = [
+    "http://localhost:3000",
+    "https://localhost:3000",
+    "http://localhost",
+    "http://localhost:8000",
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 #from fastapi.staticfiles import StaticFiles
 #app.mount("/app", StaticFiles(directory="app"), name="app")
 
@@ -89,7 +104,6 @@ def set_bandwidth(bandwidth: BandwidthModel):
     params.set_bandwidth(bandwidth.bandwidth)
     return {"message": "Bandwidth set successfully"}
 
-# GET endpoint to retrieve the bandwidth value
 @app.get("/get_bandwidth")
 def get_bandwidth():
     return {"bandwidth": params.get_bandwidth()}
