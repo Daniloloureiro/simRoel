@@ -17,9 +17,22 @@ import {
     FormField,
     FormItem,
   } from "@/components/ui/form"
+import {useEffect} from "react";
 
 export default function Physical() {
     const {register,control}= useFormContext();
+
+    useEffect(() => {
+        fetch("http://localhost:8000/get_slot_size")
+            .then(response => response.json())
+            .then(data => {
+                if (data.slot_size) {
+                    // Update the form with the fetched value
+                    control._formValues.Slot_Size = data.slot_size;
+                }
+            })
+            .catch(error => console.error("Error fetching slot size:", error));
+    }, [control]);
   
     return (
         <main className="pt-6 pl-4 pr-4 pb-8">
@@ -77,14 +90,14 @@ export default function Physical() {
                                         placeholder="12.5"
                                         min="12.5"
                                         onChange={(e) => {
-                                            const value = e.target.value;
-                                            // Make sure to parse value as float
+                                            const value = parseFloat(e.target.value);
+                                            console.log("Slot size:", value);  // Para garantir que o valor está correto
                                             fetch("http://localhost:8000/set_slot_size", {
                                                 method: "POST",
                                                 headers: {
                                                     "Content-Type": "application/json",
                                                 },
-                                                body: JSON.stringify({slot_size: parseFloat(value)}),
+                                                body: JSON.stringify({ slot_size: value }),
                                             })
                                                 .then(response => response.json())
                                                 .then(data => console.log("Success:", data))
@@ -187,7 +200,7 @@ export default function Physical() {
                             </div>
                         </div>
                     </fieldset>
-                   
+
                 </div>
             </Card>
         </main>
