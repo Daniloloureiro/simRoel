@@ -33,7 +33,57 @@ export default function Physical() {
             })
             .catch(error => console.error("Error fetching slot size:", error));
     }, [control]);
-  
+
+    useEffect(() => {
+        fetch("http://localhost:8000/get_core_pitch")
+            .then(response => response.json())
+            .then(data => {
+                if (data.core_pitch) {
+                    // Atualiza o formulário com o valor buscado de core_pitch
+                    control._formValues.Core_Pitch = data.core_pitch;
+                }
+            })
+            .catch(error => console.error("Error fetching core pitch:", error));
+    }, [control]);
+
+    useEffect(() => {
+        fetch("http://localhost:8000/get_node_loss")
+            .then(response => response.json())
+            .then(data => {
+                if (data.node_loss) {
+                    // Update the form with the fetched value
+                    control._formValues.Node_Loss = data.node_loss;
+                }
+            })
+            .catch(error => console.error("Error fetching node loss:", error));
+    }, [control]);
+
+    useEffect(() => {
+        fetch("http://localhost:8000/get_fiber_loss_coefficient")
+            .then(response => response.json())
+            .then(data => {
+                if (data.fiber_loss_coefficient) {
+                    // Update the form with the fetched value
+                    control._formValues.Fiber_Loss_Coefficient = data.fiber_loss_coefficient;
+                }
+            })
+            .catch(error => console.error("Error fetching fiber loss coefficient:", error));
+    }, [control]);
+
+    useEffect(() => {
+        fetch("http://localhost:8000/get_noise_figure")
+            .then(response => response.json())
+            .then(data => {
+                if (data.noise_figure) {
+                    // Update the form with the fetched value
+                    control._formValues.Noise_Figure = data.noise_figure;
+                }
+            })
+            .catch(error => console.error("Error fetching noise figure:", error));
+    }, [control]);
+
+
+
     return (
         <main className="pt-6 pl-4 pr-4 pb-8">
             <Card className="sm:col-span-2" x-chunk="dashboard-05-chunk-0">
@@ -45,18 +95,22 @@ export default function Physical() {
                                 <FormField
                                 control={control}
                                 name="Total_Bandwidth"
-                                render={({field})=>(
+                                render={({ field }) => (
                                     <FormItem>
                                         <Label htmlFor="Total_Bandwidth">Total Bandwidth</Label>
                                         <Select
                                             onValueChange={(value) => {
-                                                field.onChange(value);
-                                                fetch("/set_bandwidth", {
+                                                // Map the selected value to the desired output
+                                                const bandwidthValue = value === "4" ? 4000 : 9000;
+
+                                                // Update the field and make the POST request with the mapped value
+                                                field.onChange(bandwidthValue);
+                                                fetch("http://localhost:8000/set_bandwidth", {
                                                     method: "POST",
                                                     headers: {
                                                         "Content-Type": "application/json",
                                                     },
-                                                    body: JSON.stringify({ bandwidth: value }),
+                                                    body: JSON.stringify({ bandwidth: bandwidthValue }),
                                                 })
                                                     .then(response => response.json())
                                                     .then(data => console.log("Success:", data))
@@ -66,7 +120,7 @@ export default function Physical() {
                                         >
                                             <FormControl>
                                                 <SelectTrigger className="input">
-                                                    <SelectValue placeholder="Select a option" />
+                                                    <SelectValue placeholder="Select an option" />
                                                 </SelectTrigger>
                                             </FormControl>
                                             <SelectContent>
@@ -75,7 +129,6 @@ export default function Physical() {
                                             </SelectContent>
                                         </Select>
                                     </FormItem>
-
                                 )}
                                 />
                             </div>
@@ -109,23 +162,79 @@ export default function Physical() {
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="grid gap-3">
                                     <Label htmlFor="Node Loss">Node Loss(dB)</Label>
-                                    <Input className='input' {...register("Node_Loss")} type="number" placeholder="16"
-                                           min="16"/>
+                                    <Input
+                                        className="input"
+                                        {...register("Node_Loss")}
+                                        type="number"
+                                        placeholder="16"
+                                        min="16"
+                                        onBlur={(e) => {
+                                            const nodeLossValue = parseFloat(e.target.value);
+                                            fetch("http://localhost:8000/set_node_loss", {
+                                                method: "POST",
+                                                headers: {
+                                                    "Content-Type": "application/json",
+                                                },
+                                                body: JSON.stringify({node_loss: nodeLossValue}),
+                                            })
+                                                .then(response => response.json())
+                                                .then(data => console.log("Success:", data))
+                                                .catch(error => console.error("Error:", error));
+                                        }}
+                                    />
                                 </div>
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="grid gap-3">
                                     <Label htmlFor="Fiber Loss Coefficient">Fiber Loss Coefficient(dB/km)</Label>
-                                    <Input className='input' {...register("Fiber_Loss_Coefficient")} type="number"
-                                           placeholder="1" min="1"/>
+                                    <Input
+                                        className="input"
+                                        {...register("Fiber_Loss_Coefficient")}
+                                        type="number"
+                                        placeholder="1"
+                                        min="1"
+                                        onBlur={(e) => {
+                                            const fiberLossValue = parseFloat(e.target.value);
+                                            fetch("http://localhost:8000/set_fiber_loss_coefficient", {
+                                                method: "POST",
+                                                headers: {
+                                                    "Content-Type": "application/json",
+                                                },
+                                                body: JSON.stringify({fiber_loss_coefficient: fiberLossValue}),
+                                            })
+                                                .then(response => response.json())
+                                                .then(data => console.log("Success:", data))
+                                                .catch(error => console.error("Error:", error));
+                                        }}
+                                    />
                                 </div>
                             </div>
                             <div className="grid grid-cols-2 gap-4">
-                            <div className="grid gap-3">
-                                <Label htmlFor="Noise Figure">Noise Figure(dB)</Label>
-                                <Input className='input' {...register("Nose_Figure")} type="number" placeholder="5.5" min="5.5" />
+                                <div className="grid gap-3">
+                                    <Label htmlFor="Noise Figure">Noise Figure(dB)</Label>
+                                    <Input
+                                        className="input"
+                                        {...register("Noise_Figure")}
+                                        type="number"
+                                        placeholder="5.5"
+                                        min="5.5"
+                                        onBlur={(e) => {
+                                            const noiseFigureValue = parseFloat(e.target.value);
+                                            fetch("http://localhost:8000/set_noise_figure", {
+                                                method: "POST",
+                                                headers: {
+                                                    "Content-Type": "application/json",
+                                                },
+                                                body: JSON.stringify({noise_figure: noiseFigureValue}),
+                                            })
+                                                .then(response => response.json())
+                                                .then(data => console.log("Success:", data))
+                                                .catch(error => console.error("Error:", error));
+                                        }}
+                                    />
+                                </div>
                             </div>
-                            </div>
+
                             <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">
                                 <FormField
@@ -171,7 +280,26 @@ export default function Physical() {
                             <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">
                                 <Label htmlFor="Core Pitch">Core Pitch(µm)</Label>
-                                <Input className='input' {...register("Core_Pitch")} type="number" placeholder="45" min="45" />
+                                <Input className='input' {...register("Core_Pitch")}
+                                       type="number"
+                                       placeholder="45"
+                                       min="45"
+                                       onChange={(e) => {
+                                           const value = parseFloat(e.target.value);
+                                           console.log("Core Pitch:", value);  // Para garantir que o valor está correto
+                                           fetch("http://localhost:8000/set_core_pitch", {
+                                               method: "POST",
+                                               headers: {
+                                                   "Content-Type": "application/json",
+                                               },
+                                               body: JSON.stringify({ core_pitch: value }),
+                                           })
+                                               .then(response => response.json())
+                                               .then(data => console.log("Success:", data))
+                                               .catch(error => console.error("Error:", error));
+                                       }}
+
+                                />
                             </div>
                             </div>
                             <div className="grid grid-cols-2 gap-4">
