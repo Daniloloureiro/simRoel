@@ -6,10 +6,6 @@ Pra criar o backend corretamente use o comando
 fastapi dev .\main.py 
 ```
 
-![[Pasted image 20241121182638.png]]
-Deve aparecer assim ^
-
-
 precisa ter os 
 @app.post("/...") e @app.get("/...")
 de acordo com o que tem em parameters.py e (se não tiver) criar o mesmo no file_manager.py
