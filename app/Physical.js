@@ -82,6 +82,140 @@ export default function Physical() {
             .catch(error => console.error("Error fetching noise figure:", error));
     }, [control]);
 
+    // Fetch Traffic Lambda
+    useEffect(() => {
+        fetch("http://localhost:8000/get_traffic_lambda")
+            .then(response => response.json())
+            .then(data => {
+                if (data.traffic_lambda) {
+                    control._formValues.Traffic_Lambda = data.traffic_lambda;
+                }
+            })
+            .catch(error => console.error("Error fetching traffic lambda:", error));
+    }, [control]);
+
+// Fetch Route Algorithm
+    useEffect(() => {
+        fetch("http://localhost:8000/get_route_algorithm")
+            .then(response => response.json())
+            .then(data => {
+                if (data.route_algorithm) {
+                    control._formValues.Route_Algorithm = data.route_algorithm;
+                }
+            })
+            .catch(error => console.error("Error fetching route algorithm:", error));
+    }, [control]);
+
+// Fetch PCC Holding Time
+    useEffect(() => {
+        fetch("http://localhost:8000/get_pcc_holding_time")
+            .then(response => response.json())
+            .then(data => {
+                if (data.pcc_holding_time) {
+                    control._formValues.PCC_Holding_Time = data.pcc_holding_time;
+                }
+            })
+            .catch(error => console.error("Error fetching PCC holding time:", error));
+    }, [control]);
+
+// Fetch Guard Band
+    useEffect(() => {
+        fetch("http://localhost:8000/get_guard_band")
+            .then(response => response.json())
+            .then(data => {
+                if (data.guard_band) {
+                    control._formValues.Guard_Band = data.guard_band;
+                }
+            })
+            .catch(error => console.error("Error fetching guard band:", error));
+    }, [control]);
+
+// Fetch Connection Holding Time
+    useEffect(() => {
+        fetch("http://localhost:8000/get_conn_holding_time")
+            .then(response => response.json())
+            .then(data => {
+                if (data.conn_holding_time) {
+                    control._formValues.Conn_Holding_Time = data.conn_holding_time;
+                }
+            })
+            .catch(error => console.error("Error fetching connection holding time:", error));
+    }, [control]);
+
+// Fetch Modulation
+    useEffect(() => {
+        fetch("http://localhost:8000/get_modulation")
+            .then(response => response.json())
+            .then(data => {
+                if (data.modulation) {
+                    control._formValues.Modulation = data.modulation;
+                }
+            })
+            .catch(error => console.error("Error fetching modulation:", error));
+    }, [control]);
+
+// Fetch Wavelength
+    useEffect(() => {
+        fetch("http://localhost:8000/get_wavelength")
+            .then(response => response.json())
+            .then(data => {
+                if (data.wavelength) {
+                    control._formValues.Wavelength = data.wavelength;
+                }
+            })
+            .catch(error => console.error("Error fetching wavelength:", error));
+    }, [control]);
+
+// Fetch Span Length
+    useEffect(() => {
+        fetch("http://localhost:8000/get_span_length")
+            .then(response => response.json())
+            .then(data => {
+                if (data.span_length) {
+                    control._formValues.Span_Length = data.span_length;
+                }
+            })
+            .catch(error => console.error("Error fetching span length:", error));
+    }, [control]);
+
+// Fetch Confidence Interval
+    useEffect(() => {
+        fetch("http://localhost:8000/get_confidence_interval")
+            .then(response => response.json())
+            .then(data => {
+                if (data.confidence_interval) {
+                    control._formValues.Confidence_Interval = data.confidence_interval;
+                }
+            })
+            .catch(error => console.error("Error fetching confidence interval:", error));
+    }, [control]);
+
+// Fetch Thread Number
+    useEffect(() => {
+        fetch("http://localhost:8000/get_thread_number")
+            .then(response => response.json())
+            .then(data => {
+                if (data.thread_number) {
+                    control._formValues.Thread_Number = data.thread_number;
+                }
+            })
+            .catch(error => console.error("Error fetching thread number:", error));
+    }, [control]);
+
+// Fetch PCC Time Threshold
+    useEffect(() => {
+        fetch("http://localhost:8000/get_pcc_time_threshold")
+            .then(response => response.json())
+            .then(data => {
+                if (data.pcc_time_threshold) {
+                    control._formValues.PCC_Time_Threshold = data.pcc_time_threshold;
+                }
+            })
+            .catch(error => console.error("Error fetching PCC time threshold:", error));
+    }, [control]);
+
+
+
 
 
     return (
@@ -90,48 +224,48 @@ export default function Physical() {
                 <div className="grid w-full items-start gap-6" >
                     <fieldset className="grid gap-6 rounded-lg border p-4">
                         <div className="grid grid-cols-2 gap-4">
-                        <div className="grid grid-cols-2 gap-4">
-                        <div className="grid gap-3">
-                                <FormField
-                                control={control}
-                                name="Total_Bandwidth"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <Label htmlFor="Total_Bandwidth">Total Bandwidth</Label>
-                                        <Select
-                                            onValueChange={(value) => {
-                                                // Map the selected value to the desired output
-                                                const bandwidthValue = value === "4" ? 4000 : 9000;
+                            <div className="grid grid-cols-2 gap-4">
+                                <div className="grid gap-3">
+                                    <FormField
+                                        control={control}
+                                        name="Total_Bandwidth"
+                                        render={({field}) => (
+                                            <FormItem>
+                                                <Label htmlFor="Total_Bandwidth">Total Bandwidth</Label>
+                                                <Select
+                                                    onValueChange={(value) => {
+                                                        // Map the selected value to the desired output
+                                                        const bandwidthValue = value === "4" ? 4000 : 9000;
 
-                                                // Update the field and make the POST request with the mapped value
-                                                field.onChange(bandwidthValue);
-                                                fetch("http://localhost:8000/set_bandwidth", {
-                                                    method: "POST",
-                                                    headers: {
-                                                        "Content-Type": "application/json",
-                                                    },
-                                                    body: JSON.stringify({ bandwidth: bandwidthValue }),
-                                                })
-                                                    .then(response => response.json())
-                                                    .then(data => console.log("Success:", data))
-                                                    .catch(error => console.error("Error:", error));
-                                            }}
-                                            defaultValue="Total_Bandwidth"
-                                        >
-                                            <FormControl>
-                                                <SelectTrigger className="input">
-                                                    <SelectValue placeholder="Select an option" />
-                                                </SelectTrigger>
-                                            </FormControl>
-                                            <SelectContent>
-                                                <SelectItem value="4">C Band(4 THz)</SelectItem>
-                                                <SelectItem value="9">S Band(9 THz)</SelectItem>
-                                            </SelectContent>
-                                        </Select>
-                                    </FormItem>
-                                )}
-                                />
-                            </div>
+                                                        // Update the field and make the POST request with the mapped value
+                                                        field.onChange(bandwidthValue);
+                                                        fetch("http://localhost:8000/set_bandwidth", {
+                                                            method: "POST",
+                                                            headers: {
+                                                                "Content-Type": "application/json",
+                                                            },
+                                                            body: JSON.stringify({bandwidth: bandwidthValue}),
+                                                        })
+                                                            .then(response => response.json())
+                                                            .then(data => console.log("Success:", data))
+                                                            .catch(error => console.error("Error:", error));
+                                                    }}
+                                                    defaultValue="Total_Bandwidth"
+                                                >
+                                                    <FormControl>
+                                                        <SelectTrigger className="input">
+                                                            <SelectValue placeholder="Select an option"/>
+                                                        </SelectTrigger>
+                                                    </FormControl>
+                                                    <SelectContent>
+                                                        <SelectItem value="4">C Band(4 THz)</SelectItem>
+                                                        <SelectItem value="9">S Band(9 THz)</SelectItem>
+                                                    </SelectContent>
+                                                </Select>
+                                            </FormItem>
+                                        )}
+                                    />
+                                </div>
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="grid gap-3">
@@ -150,7 +284,7 @@ export default function Physical() {
                                                 headers: {
                                                     "Content-Type": "application/json",
                                                 },
-                                                body: JSON.stringify({ slot_size: value }),
+                                                body: JSON.stringify({slot_size: value}),
                                             })
                                                 .then(response => response.json())
                                                 .then(data => console.log("Success:", data))
@@ -236,95 +370,157 @@ export default function Physical() {
                             </div>
 
                             <div className="grid grid-cols-2 gap-4">
-                            <div className="grid gap-3">
-                                <FormField
-                                control={control}
-                                name="Signal_Power"
-                                render={({field})=>(
-                                <FormItem>
-                                <Label htmlFor="Signal_Power">Signal Power</Label>
-                                <Select onValueChange={field.onChange} defaultValue="Signal_Power">
-                                    <FormControl>
-                                    <SelectTrigger className='input'>
-                                        <SelectValue placeholder="Select a option" />
-                                    </SelectTrigger>
-                                    </FormControl>
-                                    <SelectContent >
-                                    <SelectItem value="mW">mW</SelectItem>
-                                    <SelectItem value="dB">dB</SelectItem>
-                                    </SelectContent>
-                                </Select>
-                                </FormItem>
-                                )}
-                                />
-                            </div>
-                            </div>
-                            <div className="grid grid-cols-2 gap-4">
-                            <div className="grid gap-3">
-                                <Label htmlFor="Reference Band">Reference Band(Ghz)</Label>
-                                <Input className='input' {...register("Reference_Band")} type="number" placeholder="12.5" min="12.5" />
-                            </div>
+                                <div className="grid gap-3">
+                                    <FormField
+                                        control={control}
+                                        name="Signal_Power"
+                                        render={({field}) => (
+                                            <FormItem>
+                                                <Label htmlFor="Signal_Power">Signal Power</Label>
+                                                <Select onValueChange={field.onChange} defaultValue="Signal_Power">
+                                                    <FormControl>
+                                                        <SelectTrigger className='input'>
+                                                            <SelectValue placeholder="Select a option"/>
+                                                        </SelectTrigger>
+                                                    </FormControl>
+                                                    <SelectContent>
+                                                        <SelectItem value="mW">mW</SelectItem>
+                                                        <SelectItem value="dB">dB</SelectItem>
+                                                    </SelectContent>
+                                                </Select>
+                                            </FormItem>
+                                        )}
+                                    />
+                                </div>
                             </div>
                             <div className="grid grid-cols-2 gap-4">
-                            <div className="grid gap-3">
-                                <Label htmlFor="Bending Radius">Bending Radius(m)</Label>
-                                <Input className='input'{...register("Bending_Radius")}type="number" placeholder="1" min="1" />
+                                <div className="grid gap-3">
+                                    <Label htmlFor="Reference Band">Reference Band (GHz)</Label>
+                                    <Input
+                                        className='input'
+                                        {...register("Reference_Band")}
+                                        type="number"
+                                        placeholder="12.5"
+                                        min="12.5"
+                                        onChange={(e) => {
+                                            const value = parseFloat(e.target.value);
+                                            console.log("Reference Band:", value);
+                                            fetch("http://localhost:8000/set_band_ref", {
+                                                method: "POST",
+                                                headers: {
+                                                    "Content-Type": "application/json",
+                                                },
+                                                body: JSON.stringify({band_ref: value}),
+                                            })
+                                                .then(response => response.json())
+                                                .then(data => console.log("Success:", data))
+                                                .catch(error => console.error("Error:", error));
+                                        }}
+                                    />
+                                </div>
                             </div>
-                            </div>
-                            <div className="grid grid-cols-2 gap-4">
-                            <div className="grid gap-3">
-                                <Label htmlFor="Coupling Coefficient">Coupling Coefficient(dB/Km)</Label>
-                                <Input className='input' {...register("Coupling_Coefficient")} type="number" placeholder="0.2" min="0.2" />
-                            </div>
-                            </div>
-                            <div className="grid grid-cols-2 gap-4">
-                            <div className="grid gap-3">
-                                <Label htmlFor="Core Pitch">Core Pitch(µm)</Label>
-                                <Input className='input' {...register("Core_Pitch")}
-                                       type="number"
-                                       placeholder="45"
-                                       min="45"
-                                       onChange={(e) => {
-                                           const value = parseFloat(e.target.value);
-                                           console.log("Core Pitch:", value);  // Para garantir que o valor está correto
-                                           fetch("http://localhost:8000/set_core_pitch", {
-                                               method: "POST",
-                                               headers: {
-                                                   "Content-Type": "application/json",
-                                               },
-                                               body: JSON.stringify({ core_pitch: value }),
-                                           })
-                                               .then(response => response.json())
-                                               .then(data => console.log("Success:", data))
-                                               .catch(error => console.error("Error:", error));
-                                       }}
 
-                                />
-                            </div>
+                            <div className="grid grid-cols-2 gap-4">
+                                <div className="grid gap-3">
+                                    <Label htmlFor="Bending Radius">Bending Radius (m)</Label>
+                                    <Input
+                                        className='input'
+                                        {...register("Bending_Radius")}
+                                        type="number"
+                                        placeholder="1"
+                                        min="1"
+                                        onChange={(e) => {
+                                            const value = parseFloat(e.target.value);
+                                            console.log("Bending Radius:", value);
+                                            fetch("http://localhost:8000/set_bending_radius", {
+                                                method: "POST",
+                                                headers: {
+                                                    "Content-Type": "application/json",
+                                                },
+                                                body: JSON.stringify({bending_radius: value}),
+                                            })
+                                                .then(response => response.json())
+                                                .then(data => console.log("Success:", data))
+                                                .catch(error => console.error("Error:", error));
+                                        }}
+                                    />
+                                </div>
                             </div>
                             <div className="grid grid-cols-2 gap-4">
-                        <div className="grid gap-3">
-                                <FormField
-                                control={control}
-                                name="Coupling_factor"
-                                render={({field})=>(
-                                <FormItem>
-                                <Label htmlFor="Coupling_factor">Coupling factor</Label>
-                                <Select onValueChange={field.onChange} defaultValue="Coupling_factor">
-                                    <FormControl>
-                                    <SelectTrigger className='input'>
-                                        <SelectValue placeholder="Select a option" />
-                                    </SelectTrigger>
-                                    </FormControl>
-                                    <SelectContent >
-                                    <SelectItem value="1.2">1.2 x 10⁻²m⁻¹</SelectItem>
-                                    <SelectItem value="5.84">5.84 x 10⁻³m⁻¹</SelectItem>
-                                    </SelectContent>
-                                </Select>
-                                </FormItem>
-                                )}
-                                />
+                                <div className="grid gap-3">
+                                    <Label htmlFor="Coupling Coefficient">Coupling Coefficient (dB/Km)</Label>
+                                    <select
+                                        className='input'
+                                        {...register("Coupling_Coefficient")}
+                                        onChange={(e) => {
+                                            const value = parseFloat(e.target.value);
+                                            console.log("Coupling Coefficient:", value);
+                                            fetch("http://localhost:8000/set_coupling_coeff", {
+                                                method: "POST",
+                                                headers: {
+                                                    "Content-Type": "application/json",
+                                                },
+                                                body: JSON.stringify({coupling_coeff: value}),
+                                            })
+                                                .then(response => response.json())
+                                                .then(data => console.log("Success:", data))
+                                                .catch(error => console.error("Error:", error));
+                                        }}
+                                    >
+                                        <option value="">Select Coupling Coefficient</option>
+                                        <option value="0.012">1.2 × 10⁻² m⁻¹</option>
+                                        <option value="0.00584">5.84 × 10⁻³ m⁻¹</option>
+                                    </select>
+                                </div>
                             </div>
+                            <div className="grid grid-cols-2 gap-4">
+                                <div className="grid gap-3">
+                                    <Label htmlFor="Core Pitch">Core Pitch(µm)</Label>
+                                    <Input className='input' {...register("Core_Pitch")}
+                                           type="number"
+                                           placeholder="45"
+                                           min="45"
+                                           onChange={(e) => {
+                                               const value = parseFloat(e.target.value);
+                                               console.log("Core Pitch:", value);  // Para garantir que o valor está correto
+                                               fetch("http://localhost:8000/set_core_pitch", {
+                                                   method: "POST",
+                                                   headers: {
+                                                       "Content-Type": "application/json",
+                                                   },
+                                                   body: JSON.stringify({core_pitch: value}),
+                                               })
+                                                   .then(response => response.json())
+                                                   .then(data => console.log("Success:", data))
+                                                   .catch(error => console.error("Error:", error));
+                                           }}
+
+                                    />
+                                </div>
+                            </div>
+                            <div className="grid grid-cols-2 gap-4">
+                                <div className="grid gap-3">
+                                    <FormField
+                                        control={control}
+                                        name="Coupling_factor"
+                                        render={({field}) => (
+                                            <FormItem>
+                                                <Label htmlFor="Coupling_factor">Coupling factor</Label>
+                                                <Select onValueChange={field.onChange} defaultValue="Coupling_factor">
+                                                    <FormControl>
+                                                        <SelectTrigger className='input'>
+                                                            <SelectValue placeholder="Select a option"/>
+                                                        </SelectTrigger>
+                                                    </FormControl>
+                                                    <SelectContent>
+                                                        <SelectItem value="1.2">1.2 x 10⁻²m⁻¹</SelectItem>
+                                                        <SelectItem value="5.84">5.84 x 10⁻³m⁻¹</SelectItem>
+                                                    </SelectContent>
+                                                </Select>
+                                            </FormItem>
+                                        )}
+                                    />
+                                </div>
                             </div>
                         </div>
                     </fieldset>
