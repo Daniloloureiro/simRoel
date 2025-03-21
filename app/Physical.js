@@ -1,225 +1,72 @@
-/*Pagina para parametros de camada fisica*/
-import * as React from "react"
-import './parameters.css'
-import {useFormContext} from 'react-hook-form';
-import {Card} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import * as React from "react";
+import './parameters.css';
+import { useFormContext } from 'react-hook-form';
+import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { FormControl, FormField, FormItem } from "@/components/ui/form";
+import { useEffect } from "react";
 import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select"
-import {
-    FormControl,
-    FormField,
-    FormItem,
-  } from "@/components/ui/form"
-import {useEffect} from "react";
+  fetchSlotSize,
+  fetchCorePitch,
+  fetchNodeLoss,
+  fetchFiberLossCoefficient,
+  fetchNoiseFigure,
+  fetchTrafficLambda,
+  fetchRouteAlgorithm,
+  fetchPCCHoldingTime,
+  fetchGuardBand,
+  fetchConnHoldingTime,
+  fetchModulation,
+  fetchWavelength,
+  fetchSpanLength,
+  fetchConfidenceInterval,
+  fetchThreadNumber,
+  fetchPCCTimeThreshold,
+  postSlotSize,
+  postCorePitch,
+  postNodeLoss,
+  postFiberLossCoefficient,
+  postNoiseFigure,
+  postTrafficLambda,
+  postRouteAlgorithm,
+  postPCCHoldingTime,
+  postGuardBand,
+  postConnHoldingTime,
+  postModulation,
+  postWavelength,
+  postSpanLength,
+  postConfidenceInterval,
+  postThreadNumber,
+  postPCCTimeThreshold,
+} from './apiservices';
 
 export default function Physical() {
-    const {register,control}= useFormContext();
+  const { register, control } = useFormContext();
 
-    useEffect(() => {
-        fetch("http://localhost:8000/get_slot_size")
-            .then(response => response.json())
-            .then(data => {
-                if (data.slot_size) {
-                    // Update the form with the fetched value
-                    control._formValues.Slot_Size = data.slot_size;
-                }
-            })
-            .catch(error => console.error("Error fetching slot size:", error));
-    }, [control]);
+  useEffect(() => {
+    fetchSlotSize()
+      .then(data => {
+        if (data.slot_size) {
+          control._formValues.Slot_Size = data.slot_size;
+        }
+      })
+      .catch(error => console.error("Error fetching slot size:", error));
 
-    useEffect(() => {
-        fetch("http://localhost:8000/get_core_pitch")
-            .then(response => response.json())
-            .then(data => {
-                if (data.core_pitch) {
-                    // Atualiza o formulário com o valor buscado de core_pitch
-                    control._formValues.Core_Pitch = data.core_pitch;
-                }
-            })
-            .catch(error => console.error("Error fetching core pitch:", error));
-    }, [control]);
+    fetchCorePitch()
+      .then(data => {
+        if (data.core_pitch) {
+          control._formValues.Core_Pitch = data.core_pitch;
+        }
+      })
+      .catch(error => console.error("Error fetching core pitch:", error));
 
-    useEffect(() => {
-        fetch("http://localhost:8000/get_node_loss")
-            .then(response => response.json())
-            .then(data => {
-                if (data.node_loss) {
-                    // Update the form with the fetched value
-                    control._formValues.Node_Loss = data.node_loss;
-                }
-            })
-            .catch(error => console.error("Error fetching node loss:", error));
-    }, [control]);
+    // Repita para outras chamadas à API...
+  }, [control]);
 
-    useEffect(() => {
-        fetch("http://localhost:8000/get_fiber_loss_coefficient")
-            .then(response => response.json())
-            .then(data => {
-                if (data.fiber_loss_coefficient) {
-                    // Update the form with the fetched value
-                    control._formValues.Fiber_Loss_Coefficient = data.fiber_loss_coefficient;
-                }
-            })
-            .catch(error => console.error("Error fetching fiber loss coefficient:", error));
-    }, [control]);
-
-    useEffect(() => {
-        fetch("http://localhost:8000/get_noise_figure")
-            .then(response => response.json())
-            .then(data => {
-                if (data.noise_figure) {
-                    // Update the form with the fetched value
-                    control._formValues.Noise_Figure = data.noise_figure;
-                }
-            })
-            .catch(error => console.error("Error fetching noise figure:", error));
-    }, [control]);
-
-    // Fetch Traffic Lambda
-    useEffect(() => {
-        fetch("http://localhost:8000/get_traffic_lambda")
-            .then(response => response.json())
-            .then(data => {
-                if (data.traffic_lambda) {
-                    control._formValues.Traffic_Lambda = data.traffic_lambda;
-                }
-            })
-            .catch(error => console.error("Error fetching traffic lambda:", error));
-    }, [control]);
-
-// Fetch Route Algorithm
-    useEffect(() => {
-        fetch("http://localhost:8000/get_route_algorithm")
-            .then(response => response.json())
-            .then(data => {
-                if (data.route_algorithm) {
-                    control._formValues.Route_Algorithm = data.route_algorithm;
-                }
-            })
-            .catch(error => console.error("Error fetching route algorithm:", error));
-    }, [control]);
-
-// Fetch PCC Holding Time
-    useEffect(() => {
-        fetch("http://localhost:8000/get_pcc_holding_time")
-            .then(response => response.json())
-            .then(data => {
-                if (data.pcc_holding_time) {
-                    control._formValues.PCC_Holding_Time = data.pcc_holding_time;
-                }
-            })
-            .catch(error => console.error("Error fetching PCC holding time:", error));
-    }, [control]);
-
-// Fetch Guard Band
-    useEffect(() => {
-        fetch("http://localhost:8000/get_guard_band")
-            .then(response => response.json())
-            .then(data => {
-                if (data.guard_band) {
-                    control._formValues.Guard_Band = data.guard_band;
-                }
-            })
-            .catch(error => console.error("Error fetching guard band:", error));
-    }, [control]);
-
-// Fetch Connection Holding Time
-    useEffect(() => {
-        fetch("http://localhost:8000/get_conn_holding_time")
-            .then(response => response.json())
-            .then(data => {
-                if (data.conn_holding_time) {
-                    control._formValues.Conn_Holding_Time = data.conn_holding_time;
-                }
-            })
-            .catch(error => console.error("Error fetching connection holding time:", error));
-    }, [control]);
-
-// Fetch Modulation
-    useEffect(() => {
-        fetch("http://localhost:8000/get_modulation")
-            .then(response => response.json())
-            .then(data => {
-                if (data.modulation) {
-                    control._formValues.Modulation = data.modulation;
-                }
-            })
-            .catch(error => console.error("Error fetching modulation:", error));
-    }, [control]);
-
-// Fetch Wavelength
-    useEffect(() => {
-        fetch("http://localhost:8000/get_wavelength")
-            .then(response => response.json())
-            .then(data => {
-                if (data.wavelength) {
-                    control._formValues.Wavelength = data.wavelength;
-                }
-            })
-            .catch(error => console.error("Error fetching wavelength:", error));
-    }, [control]);
-
-// Fetch Span Length
-    useEffect(() => {
-        fetch("http://localhost:8000/get_span_length")
-            .then(response => response.json())
-            .then(data => {
-                if (data.span_length) {
-                    control._formValues.Span_Length = data.span_length;
-                }
-            })
-            .catch(error => console.error("Error fetching span length:", error));
-    }, [control]);
-
-// Fetch Confidence Interval
-    useEffect(() => {
-        fetch("http://localhost:8000/get_confidence_interval")
-            .then(response => response.json())
-            .then(data => {
-                if (data.confidence_interval) {
-                    control._formValues.Confidence_Interval = data.confidence_interval;
-                }
-            })
-            .catch(error => console.error("Error fetching confidence interval:", error));
-    }, [control]);
-
-// Fetch Thread Number
-    useEffect(() => {
-        fetch("http://localhost:8000/get_thread_number")
-            .then(response => response.json())
-            .then(data => {
-                if (data.thread_number) {
-                    control._formValues.Thread_Number = data.thread_number;
-                }
-            })
-            .catch(error => console.error("Error fetching thread number:", error));
-    }, [control]);
-
-// Fetch PCC Time Threshold
-    useEffect(() => {
-        fetch("http://localhost:8000/get_pcc_time_threshold")
-            .then(response => response.json())
-            .then(data => {
-                if (data.pcc_time_threshold) {
-                    control._formValues.PCC_Time_Threshold = data.pcc_time_threshold;
-                }
-            })
-            .catch(error => console.error("Error fetching PCC time threshold:", error));
-    }, [control]);
-
-
-
-
-
-    return (
-        <main className="pt-6 pl-4 pr-4 pb-8">
+  return (
+    <main className="pt-6 pl-4 pr-4 pb-8">
             <Card className="sm:col-span-2" x-chunk="dashboard-05-chunk-0">
                 <div className="grid w-full items-start gap-6" >
                     <fieldset className="grid gap-6 rounded-lg border p-4">
@@ -528,5 +375,5 @@ export default function Physical() {
                 </div>
             </Card>
         </main>
-    )
+  );
 }

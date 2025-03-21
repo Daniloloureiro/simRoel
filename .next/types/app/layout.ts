@@ -1,4 +1,4 @@
-// File: /home/cosmico/Documentos/LEA/simRoel/app/layout.js
+// File: /home/backu/Documentos/interface_projet/simRoel/app/layout.js
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
